@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">vincedb</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="users" view="colnames">
+<left>809</left>
+<top>131</top>
+<width>138</width>
+<height>181</height>
+<sql_create_table>CREATE TABLE `users` (
+  `userid` int(6) NOT NULL AUTO_INCREMENT,
+  `username` varchar(60) DEFAULT NULL,
+  `password` varchar(60) DEFAULT NULL,
+  `fullname` varchar(60) DEFAULT NULL,
+  `usertype` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`userid`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+<table name="users_assigned_areas" view="colnames">
+<left>616</left>
+<top>199</top>
+<width>171</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `users_assigned_areas` (
+  `userassignedareaid` int(6) DEFAULT NULL,
+  `userid` int(6) DEFAULT NULL,
+  `areaid` int(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="areas" view="colnames">
+<left>320</left>
+<top>191</top>
+<width>105</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `areas` (
+  `areaid` int(6) NOT NULL AUTO_INCREMENT,
+  `areaname` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`areaid`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+<table name="monthly_production_datas" view="colnames">
+<left>120</left>
+<top>89</top>
+<width>147</width>
+<height>311</height>
+<sql_create_table>CREATE TABLE `monthly_production_datas` (
+  `monthlyproductiondataid` int(6) NOT NULL AUTO_INCREMENT,
+  `userid` int(6) DEFAULT NULL,
+  `capacity` int(11) DEFAULT NULL,
+  `hourmeter` double DEFAULT NULL,
+  `submersiblepump` double DEFAULT NULL,
+  `hourmeter2` double DEFAULT NULL,
+  `boosterpump` double DEFAULT NULL,
+  `flowmeter` double DEFAULT NULL,
+  `discharge` double DEFAULT NULL,
+  `fhr` double DEFAULT NULL,
+  `fmins` double DEFAULT NULL,
+  `fsec` double DEFAULT NULL,
+  `bhr` double DEFAULT NULL,
+  `bmins` double DEFAULT NULL,
+  `bsec` double DEFAULT NULL,
+  `present2` double DEFAULT NULL,
+  `previous2` double DEFAULT NULL,
+  `fhr2` double DEFAULT NULL,
+  `fmins2` double DEFAULT NULL,
+  `fsec2` double DEFAULT NULL,
+  `bhr2` double DEFAULT NULL,
+  `bmins2` double DEFAULT NULL,
+  `bsec2` double DEFAULT NULL,
+  `lhr` double DEFAULT NULL,
+  `lmin` double DEFAULT NULL,
+  `whr` double DEFAULT NULL,
+  `wmin` double DEFAULT NULL,
+  `flushout` double DEFAULT NULL,
+  `h2oused` double DEFAULT NULL,
+  `flushout2` double DEFAULT NULL,
+  `h2oused2` double DEFAULT NULL,
+  `datecreated` date DEFAULT NULL,
+  PRIMARY KEY (`monthlyproductiondataid`),
+  KEY `FK_user_data_table` (`userid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+<table name="pumping_stations" view="colnames">
+<left>481</left>
+<top>196</top>
+<width>110</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `pumping_stations` (
+  `pumpid` int(10) NOT NULL AUTO_INCREMENT,
+  `areaid` int(10) DEFAULT NULL,
+  `pumpname` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`pumpid`),
+  KEY `FK_pumping_table` (`areaid`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
