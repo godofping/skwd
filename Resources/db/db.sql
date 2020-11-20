@@ -112,7 +112,7 @@ CREATE TABLE `user` (
   `fullname` varchar(60) DEFAULT NULL,
   `usertype` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `user` */
 
