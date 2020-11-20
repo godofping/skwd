@@ -10,10 +10,6 @@ function loadData()
     },
         success: function(response) {
 
-            $('#numberofdrivers').text(response['numberofdrivers']);
-            $('#numberofvehicles').text(response['numberofvehicles']); 
-            $('#numberofusers').text(response['numberofusers']);
-            $('#numberoflogs').text(response['numberoflogs']); 
         },
 
     });

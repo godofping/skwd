@@ -2,7 +2,7 @@
 <?php include('menu.php'); ?>
 
     <div class="container">
-        <div class="row mt-1 mb-1">
+        <div class="row my-2">
 
             <div class="col-12">
                 <div class="card">

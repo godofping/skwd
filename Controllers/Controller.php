@@ -29,30 +29,8 @@ Class Controller {
             break;
 
             case ($page === "dashboard"):
-                if ($_SESSION['usertype'] == 'Admin') {
+                if ($_SESSION['usertype'] == 'ADMIN') {
                     require "Views/dashboard.php";
-                }
-                else
-                {
-                    header("location: ?p=error");
-                }
-                exit();
-            break;
-
-            case ($page === "drivers"):
-                if ($_SESSION['usertype'] == 'Admin') {
-                    require "Views/drivers.php";
-                }
-                else
-                {
-                    header("location: ?p=error");
-                }
-                exit();
-            break;
-
-            case ($page === "fuel-logs"):
-                if ($_SESSION['usertype'] == 'Encoder') {
-                    require "Views/fuel-logs.php";
                 }
                 else
                 {
@@ -72,9 +50,8 @@ Class Controller {
                 exit();
             break;
             
-
             case ($page === "users"):
-                if ($_SESSION['usertype'] == 'Admin') {
+                if ($_SESSION['usertype'] == 'ADMIN') {
                     require "Views/users.php";
                 }
                 else
@@ -83,30 +60,6 @@ Class Controller {
                 }
                 exit();
             break;
-
-            case ($page === "vehicles"):
-                if ($_SESSION['usertype'] == 'Admin') {
-                    require "Views/vehicles.php";
-                }
-                else
-                {
-                    header("location: ?p=error");
-                }
-                exit();
-            break;
-
-            case ($page === "view-fuel-logs"):
-                if ($_SESSION['usertype'] == 'Admin' or $_SESSION['usertype'] == 'Boss') {
-                    require "Views/view-fuel-logs.php";
-                }
-                else
-                {
-                    header("location: ?p=error");
-                }
-                exit();
-            break;
-
-        
 
 
             //END ROUTES
@@ -120,30 +73,6 @@ Class Controller {
         
                     $load = $_POST['load'];
                     
-                    if ($load == 'selectdashboard') {
-                        echo json_encode($this->db->selectDashboard());
-                        exit();
-                    }
-
-                    if ($load == 'selectdriver') {
-                        echo json_encode($this->db->selectDriverByID($_POST['driverid']));
-                        exit();
-                    }
-
-                    if ($load == 'selectdrivers') {
-                        echo json_encode($this->db->selectDrivers());
-                        exit();
-                    }
-
-                    if ($load == 'selectfuellog') {
-                        echo json_encode($this->db->selectFuelLogByID($_POST['fuellogid']));
-                        exit();
-                    }
-
-                    if ($load == 'selectfuellogs') {
-                        echo json_encode($this->db->selectFuelLogs());
-                        exit();
-                    }
 
                     if ($load == 'selectuser') {
                         echo json_encode($this->db->selectUserByID($_POST['userid']));
@@ -155,15 +84,6 @@ Class Controller {
                         exit();
                     }
 
-                    if ($load == 'selectvehicle') {
-                        echo json_encode($this->db->selectVehicleByID($_POST['vehicleid']));
-                        exit();
-                    }
-
-                    if ($load == 'selectvehicles') {
-                        echo json_encode($this->db->selectVehicles());
-                        exit();
-                    }
 
                 }
                 else
@@ -191,14 +111,11 @@ Class Controller {
                             $_SESSION['userid'] = $user['userid'];
                             $_SESSION['usertype'] = $user['usertype'];
                             
-                            if ($user['usertype'] == 'Admin') {
+                            if ($user['usertype'] == 'ADMIN') {
                                 echo 1;
                             }
-                            elseif ($user['usertype'] == 'Boss') {
+                            elseif ($user['usertype'] == 'USER') {
                                 echo 2;
-                            }
-                            elseif ($user['usertype'] == 'Encoder') {
-                                echo 3;
                             }
                         }
                         else
@@ -227,16 +144,7 @@ Class Controller {
                 {
                     $submit = $_POST['submit'];
 
-                    if ($submit == 'createdriver') {
-                        echo $this->db->createDriver($_POST['fullname'], $_POST['contactnumber'], $_POST['address']);
-                        exit();
-                    }
-
-                    if ($submit == 'createfuellog') {
-                        echo $this->db->createFuelLog($_SESSION['userid'], $_POST['driverid'], $_POST['vehicleid'], $_POST['amountoffuel'], $_POST['triplocation'], $_POST['fuellogdate']);
-                        exit();
-                    }
-
+                
                     if ($submit == 'createuser') {
                         if (count($this->db->selectUsername($_POST['username'])) > 0) {
                             echo -1;
@@ -248,33 +156,9 @@ Class Controller {
                         }
                     }
 
-                    if ($submit == 'createvehicle') {
-                        echo $this->db->createVehicle($_POST['vehiclename'], $_POST['typeofvehicle'], $_POST['status']);
-                        exit();
-                    }
-
-                    if ($submit == 'deletedriver') {
-                        echo $this->db->deleteDriver($_POST['deleteid']);
-                        exit();
-                    }
 
                     if ($submit == 'deleteuser') {
                         echo $this->db->deleteUser($_POST['deleteid']);
-                        exit();
-                    }
-
-                    if ($submit == 'deletevehicle') {
-                        echo $this->db->deleteVehicle($_POST['deleteid']);
-                        exit();
-                    }
-
-                    if ($submit == 'updatedriver') {
-                        echo $this->db->updateDriver($_POST['updateid'], $_POST['fullname1'], $_POST['contactnumber1'], $_POST['address1']);
-                        exit();
-                    }
-
-                    if ($submit == 'updatefuellog') {
-                        echo $this->db->updateFuelLog($_POST['updateid'], $_SESSION['userid'], $_POST['driverid1'], $_POST['vehicleid1'], $_POST['amountoffuel1'], $_POST['triplocation1'], $_POST['fuellogdate1']);
                         exit();
                     }
 
@@ -283,10 +167,6 @@ Class Controller {
                         exit();
                     }
 
-                    if ($submit == 'updatevehicle') {
-                        echo $this->db->updateVehicle($_POST['updateid'], $_POST['vehiclename1'], $_POST['typeofvehicle1'], $_POST['status1']);
-                        exit();
-                    }
                 }
                 else
                 {

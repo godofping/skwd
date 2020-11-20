@@ -33,11 +33,7 @@ $('#loginform').validate({ // initialize the plugin
                 }
                 else if (data == 2)
                 {
-                    window.location.replace("?p=view-fuel-logs");
-                }
-                else if (data == 3)
-                {
-                    window.location.replace("?p=fuel-logs");
+                    window.location.replace("?p=dashboard");
                 }
                 else
                 {

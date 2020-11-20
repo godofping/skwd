@@ -2,7 +2,7 @@
 
 return [
     'db_host' => 'localhost',
-    'db_name' => 'fuel_db',
+    'db_name' => 'vincedb',
     'db_user' => 'root',
     'db_password' => '',
     'db_charset' => 'utf8',

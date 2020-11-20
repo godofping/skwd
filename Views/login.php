@@ -1,16 +1,14 @@
 <?php 
     if (isset($_SESSION['usertype'])) {
-        if ($_SESSION['usertype'] == 'Admin') {
+        if ($_SESSION['usertype'] == 'ADMIN') {
         header("Location: ?p=dashboard");
         } 
 
-        if ($_SESSION['usertype'] == 'Boss') {
+        if ($_SESSION['usertype'] == 'USER') {
             header("Location: ?p=view-fuel-logs");
         } 
 
-        if ($_SESSION['usertype'] == 'Encoder') {
-            header("Location: ?p=fuel-logs");
-        } 
+
     }
 ?>
 
@@ -27,7 +25,7 @@
 
     <title>Fuel Log Information System</title>
   </head>
-  <body>
+  <body class="bg-primary">
 
     <div class="container">
         <div class="row mt-5 mb-5">
@@ -35,10 +33,16 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                
-                        <h4 class="card-title text-center">Fuel Log Information System</h4>
 
-                        <form id="loginform" name="loginform">
+                        <div class="w-100 text-center">
+                            <img src="Resources/assets/img/logo.jpg" height="100">
+                        </div>
+                
+                        <h3 class="card-title text-center">SKWD-Water Production Data Sheet (SKWD-WPDS)</h3>
+
+                        <hr>
+
+                        <form id="loginform" name="loginform" autocomplete="false">
 
                             <div class="form-group">
                                 <label>Username</label>
