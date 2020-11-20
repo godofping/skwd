@@ -5,19 +5,19 @@ var table = $('#maintable').DataTable( {
          "type": "POST",
          "dataSrc": "",
          "data" : {
-            "load" : "selectvehicles",
+            "load" : "selectusers",
         }
     },
     "columns": [
-        { "data": "vehicleid" },
-        { "data": "vehiclename" },
-        { "data": "typeofvehicle" },
-        { "data": "status" },
+        { "data": "userid" },
+        { "data": "username" },
+        { "data": "fullname" },
+        { "data": "usertype" },
         {
             "data": null ,
             "render" : function ( data, type, full ) 
             {
-                return "<button type='button' class='btn btn-icon btn-warning mb-1' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['vehicleid'] + ")'><i class='bx bxs-pencil'></i></button> <button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['vehicleid'] + ")'><i class='bx bx-trash-alt'></i></button>";
+                return "<button type='button' class='btn btn-icon btn-warning mb-1' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['userid'] + ")'><i class='bx bxs-pencil'></i></button> <button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['userid'] + ")'><i class='bx bx-trash-alt'></i></button>";
             }
         },
     ],
@@ -30,21 +30,24 @@ $('#createForm').validate({
     onfocusout: false,
     rules: {
  
-        vehiclename: {
+        username: {
             required: true,
         },
-        typeofvehicle: {
+        password: {
             required: true,
         },
-        status: {
+        fullname: {
             required: true,
-        }
+        },
+        usertype: {
+            required: true,
+        },
 
     },
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'createvehicle');
+        formData.append('submit', 'createuser');
 
         $.ajax({
             type: "POST",
@@ -55,13 +58,18 @@ $('#createForm').validate({
             contentType: false,
             processData: false,
             success: function(data) {
-
+           
                 if (data > 0){
                     
                     swal("Success!", "Saved.", "success");
 
                     $('#createModal').modal('hide');
                     table.ajax.reload();
+
+                }
+                else if (data < 0){
+                    
+                    swal("Error!", "Username already taken.", "error");
 
                 }
                 else
@@ -86,13 +94,13 @@ $('#updateForm').validate({
     onfocusout: false,
     rules: {
  
-        vehiclename1: {
+        password1: {
             required: true,
         },
-        typeofvehicle1: {
+        fullname1: {
             required: true,
         },
-        status1: {
+        usertype1: {
             required: true,
         },
 
@@ -100,7 +108,7 @@ $('#updateForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'updatevehicle');
+        formData.append('submit', 'updateuser');
 
         $.ajax({
             type: "POST",
@@ -147,7 +155,7 @@ $('#deleteForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'deletevehicle');
+        formData.append('submit', 'deleteuser');
 
         $.ajax({
             type: "POST",
@@ -158,8 +166,6 @@ $('#deleteForm').validate({
             contentType: false,
             processData: false,
             success: function(data) {
-
-
 
                 if (data > 0){
                     
@@ -189,7 +195,7 @@ $('#deleteForm').validate({
 
 
 
-function update(vehicleid)
+function update(userid)
 {
 
     $.ajax({
@@ -198,17 +204,18 @@ function update(vehicleid)
     url: "?p=load",
     async: false,
     data: {
-        load: "selectvehicle",
-        vehicleid: vehicleid,
+        load: "selectuser",
+        userid: userid,
     },
         success: function(response) {
 
             $('#updateModal').modal('show');
 
-            $('#updateid').val(response['vehicleid']);
-            $('#vehiclename1').val(response['vehiclename']);
-            $('#typeofvehicle1').val(response['typeofvehicle']); 
-            $('#status1').val(response['status']);
+            $('#updateid').val(response['userid']);
+            $('#username1').val(response['username']);
+            $('#password1').val(response['password']); 
+            $('#fullname1').val(response['fullname']);
+            $('#usertype1').val(response['usertype']); 
         },
 
     });
@@ -218,7 +225,7 @@ function update(vehicleid)
 }
 
 
-function del(vehicleid)
+function del(userid)
 {
 
     $.ajax({
@@ -227,15 +234,15 @@ function del(vehicleid)
     url: "?p=load",
     async: false,
     data: {
-        load: "selectvehicle",
-        vehicleid: vehicleid,
+        load: "selectuser",
+        userid: userid,
     },
         success: function(response) {
 
             $('#deleteModal').modal('show');
 
-            $('#deleteid').val(response['vehicleid']);
-            $('#namespan').text(response['vehiclename']);
+            $('#deleteid').val(response['userid']);
+            $('#namespan').text(response['fullname']);
              
         },
 
@@ -244,7 +251,6 @@ function del(vehicleid)
 
     $('#updateAnnouncementModal').modal('show'); 
 }
-
 
 $("#createModal").on('show.bs.modal', function(){
     $('#createForm').trigger("reset");

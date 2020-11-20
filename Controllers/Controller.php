@@ -28,6 +28,17 @@ Class Controller {
                 exit();
             break;
 
+            case ($page === "areas"):
+                if ($_SESSION['usertype'] == 'ADMIN') {
+                    require "Views/areas.php";
+                }
+                else
+                {
+                    header("location: ?p=error");
+                }
+                exit();
+            break;
+
             case ($page === "dashboard"):
                 if ($_SESSION['usertype'] == 'ADMIN') {
                     require "Views/dashboard.php";
