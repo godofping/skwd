@@ -6,10 +6,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  
-
   <div class="collapse navbar-collapse" id="navbarToggler">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+    <div class="border-left">
+      <h6 class="text-white p-2" href="?p=dashboard"> Welcome <b><?php   
+          $user = $this->db->selectUserByID($_SESSION['userid']);
+          echo $user['fullname'];
+
+        ?>!</b> - <small><?php echo $user['usertype']; ?></small></h6>
+    </div>
+
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 
       <?php if ($_SESSION['usertype'] == 'ADMIN'): ?>
 
@@ -29,8 +36,6 @@
           <a class="nav-link" href="?p=pumping-stations">Pumping Stations</a>
         </li>
 
-        
-        
       <?php endif ?>
 
       <?php if ($_SESSION['usertype'] == 'USER'): ?>
@@ -41,14 +46,13 @@
         
       <?php endif ?>
 
-
       <li class="nav-item">
-          <a class="nav-link" href="?p=logout">Logout</a>
+        <a class="nav-link" href="?p=logout"><button class="btn btn-light">Logout</button></a>
       </li>
-      
-
 
     </ul>
+
+
 
   </div>
 

@@ -5,20 +5,21 @@ var table = $('#maintable').DataTable( {
          "type": "POST",
          "dataSrc": "",
          "data" : {
-            "load" : "selectareas",
+            "load" : "selectpumpstations",
         }
     },
     "columns": [
-        { "data": "areaid" },
+        { "data": "pumpid" },
         { "data": "areaname" },
+        { "data": "pumpstationname" },
         {
             "data": null ,
             "render" : function ( data, type, full ) 
             {
-                var button = "";
-                button += "<button type='button' class='btn btn-icon btn-warning' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['areaid'] + ")'><i class='bx bxs-pencil'></i></button>";
-                button += "<button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['areaid'] + ")'><i class='bx bx-trash-alt'></i></button>";
-                return button;
+            	var button = "";
+                button += "<button type='button' class='btn btn-icon btn-warning' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['pumpid'] + ")'><i class='bx bxs-pencil'></i></button>";
+            	button += "<button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['pumpid'] + ")'><i class='bx bx-trash-alt'></i></button>";
+            	return button;
             }
         },
     ],
@@ -31,7 +32,10 @@ $('#createForm').validate({
     onfocusout: false,
     rules: {
  
-        areaname: {
+        areaid: {
+            required: true,
+        },
+        pumpstationname: {
             required: true,
         },
 
@@ -39,7 +43,7 @@ $('#createForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'createarea');
+        formData.append('submit', 'createpumpstation');
 
         $.ajax({
             type: "POST",
@@ -81,7 +85,10 @@ $('#updateForm').validate({
     onfocusout: false,
     rules: {
  
-        areaname1: {
+        areaid1: {
+            required: true,
+        },
+        pumpstationname1: {
             required: true,
         },
 
@@ -89,7 +96,7 @@ $('#updateForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'updatearea');
+        formData.append('submit', 'updatepumpstation');
 
         $.ajax({
             type: "POST",
@@ -136,7 +143,7 @@ $('#deleteForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'deletearea');
+        formData.append('submit', 'deletepumpstation');
 
         $.ajax({
             type: "POST",
@@ -178,29 +185,32 @@ $('#deleteForm').validate({
 
 function update(id)
 {
+
     $.ajax({
     type: "POST",
     dataType: 'json',
     url: "?p=load",
     async: false,
     data: {
-        load: "selectarea",
-        areaid: id,
+        load: "selectpumpstation",
+        pumpid: id,
     },
         success: function(response) {
 
             $('#updateModal').modal('show');
 
-            $('#updateid').val(response['areaid']);
-            $('#areaname1').val(response['areaname']);
+            $('#updateid').val(response['pumpid']);
+            $('#areaid1').val(response['areaid']);
+            $('#pumpstationname1').val(response['pumpstationname']); 
 
         },
 
     });
+
 }
 
 
-function del(areaid)
+function del(id)
 {
 
     $.ajax({
@@ -209,15 +219,15 @@ function del(areaid)
     url: "?p=load",
     async: false,
     data: {
-        load: "selectarea",
-        areaid: areaid,
+        load: "selectpumpstation",
+        pumpid: id,
     },
         success: function(response) {
 
             $('#deleteModal').modal('show');
 
-            $('#deleteid').val(response['areaid']);
-            $('#namespan').text(response['areaname']);
+            $('#deleteid').val(response['pumpid']);
+            $('#namespan').text(response['pumpstationname']);
              
         },
 
@@ -231,4 +241,37 @@ $("#createModal").on('show.bs.modal', function(){
 
 $("#updateModal").on('show.bs.modal', function(){
     $('#updateForm').trigger("reset");
+});
+
+
+$.ajax({
+    type: "POST",
+    url: "?p=load",
+    async: true,
+    data: {
+        load: "selectareas",
+    },
+    success: function(data) {
+
+        var data = JSON.parse(data);
+        var dropdown = $('#areaid');
+        var dropdown1 = $('#areaid1');
+            
+        dropdown.empty();
+        dropdown1.empty();
+
+        $.each(data, function(index) {
+            var val = data[index].areaname;
+            var id = data[index].areaid;
+            selected = "";
+            if(data[index].isDefault == '1')
+            {
+                selected = "selected";
+            }
+           dropdown.append("<option " + selected +  " value='" + id + "' >" + val + "</option>");
+           dropdown1.append("<option " + selected +  " value='" + id + "' >" + val + "</option>");
+        });
+    
+    }
+
 });

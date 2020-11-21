@@ -24,7 +24,7 @@ CREATE TABLE `area` (
   `areaid` int(6) NOT NULL AUTO_INCREMENT,
   `areaname` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`areaid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `area` */
 
@@ -78,16 +78,16 @@ CREATE TABLE `monthly_production_data` (
 DROP TABLE IF EXISTS `pumping_station`;
 
 CREATE TABLE `pumping_station` (
-  `pumpid` int(10) NOT NULL AUTO_INCREMENT,
-  `areaid` int(10) DEFAULT NULL,
-  `pumpname` varchar(50) DEFAULT NULL,
+  `pumpid` int(6) NOT NULL AUTO_INCREMENT,
+  `areaid` int(6) DEFAULT NULL,
+  `pumpstationname` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`pumpid`),
   KEY `FK_pumping_table` (`areaid`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `pumping_station` */
 
-insert  into `pumping_station`(`pumpid`,`areaid`,`pumpname`) values (5,1,'Pumping Station 1'),(9,1,'Pumping Station 2'),(12,3,'Pumping Station 3');
+insert  into `pumping_station`(`pumpid`,`areaid`,`pumpstationname`) values (5,1,'Pumping Station 1'),(9,1,'Pumping Station 2'),(12,3,'Pumping Station 3');
 
 /*Table structure for table `pumpstationuser` */
 
@@ -117,6 +117,27 @@ CREATE TABLE `user` (
 /*Data for the table `user` */
 
 insert  into `user`(`userid`,`username`,`password`,`fullname`,`usertype`) values (19,'admin','admin','admin','ADMIN'),(20,'user','user','user','USER');
+
+/*Table structure for table `view_pumping_station` */
+
+DROP TABLE IF EXISTS `view_pumping_station`;
+
+/*!50001 DROP VIEW IF EXISTS `view_pumping_station` */;
+/*!50001 DROP TABLE IF EXISTS `view_pumping_station` */;
+
+/*!50001 CREATE TABLE  `view_pumping_station`(
+ `pumpid` int(6) ,
+ `areaid` int(6) ,
+ `pumpstationname` varchar(60) ,
+ `areaname` varchar(60) 
+)*/;
+
+/*View structure for view view_pumping_station */
+
+/*!50001 DROP TABLE IF EXISTS `view_pumping_station` */;
+/*!50001 DROP VIEW IF EXISTS `view_pumping_station` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_pumping_station` AS select `pumping_station`.`pumpid` AS `pumpid`,`pumping_station`.`areaid` AS `areaid`,`pumping_station`.`pumpstationname` AS `pumpstationname`,`area`.`areaname` AS `areaname` from (`pumping_station` join `area` on((`pumping_station`.`areaid` = `area`.`areaid`))) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

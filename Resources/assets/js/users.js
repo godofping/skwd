@@ -17,7 +17,10 @@ var table = $('#maintable').DataTable( {
             "data": null ,
             "render" : function ( data, type, full ) 
             {
-                return "<button type='button' class='btn btn-icon btn-warning mb-1' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['userid'] + ")'><i class='bx bxs-pencil'></i></button> <button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['userid'] + ")'><i class='bx bx-trash-alt'></i></button>";
+                var button = "";
+                button += "<button type='button' class='btn btn-icon btn-warning' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['userid'] + ")'><i class='bx bxs-pencil'></i></button>";
+                button += "<button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['userid'] + ")'><i class='bx bx-trash-alt'></i></button>";
+                return button;
             }
         },
     ],

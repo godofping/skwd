@@ -60,6 +60,17 @@ Class Controller {
                 header("Location: ?p=login");
                 exit();
             break;
+
+            case ($page === "pumping-stations"):
+                if ($_SESSION['usertype'] == 'ADMIN') {
+                    require "Views/pumping-stations.php";
+                }
+                else
+                {
+                    header("location: ?p=error");
+                }
+                exit();
+            break;
             
             case ($page === "users"):
                 if ($_SESSION['usertype'] == 'ADMIN') {
@@ -91,6 +102,16 @@ Class Controller {
 
                     if ($load == 'selectareas') {
                         echo json_encode($this->db->selectAreas());
+                        exit();
+                    }
+
+                    if ($load == 'selectpumpstation') {
+                        echo json_encode($this->db->selectPumpStationByID($_POST['pumpid']));
+                        exit();
+                    }
+
+                    if ($load == 'selectpumpstations') {
+                        echo json_encode($this->db->selectPumpStations());
                         exit();
                     }
                     
@@ -170,6 +191,10 @@ Class Controller {
                         exit();
                     }
 
+                    if ($submit == 'createpumpstation') {
+                        echo $this->db->createPumpStation($_POST['areaid'], $_POST['pumpstationname']);
+                        exit();
+                    }
                 
                     if ($submit == 'createuser') {
                         if (count($this->db->selectUsername($_POST['username'])) > 0) {
@@ -187,6 +212,11 @@ Class Controller {
                         exit();
                     }
 
+                    if ($submit == 'deletepumpstation') {
+                        echo $this->db->deletePumpStation($_POST['deleteid']);
+                        exit();
+                    }
+
                     if ($submit == 'deleteuser') {
                         echo $this->db->deleteUser($_POST['deleteid']);
                         exit();
@@ -194,6 +224,11 @@ Class Controller {
 
                     if ($submit == 'updatearea') {
                         echo $this->db->updateArea($_POST['updateid'], $_POST['areaname1']);
+                        exit();
+                    }
+
+                    if ($submit == 'updatepumpstation') {
+                        echo $this->db->updatePumpStation($_POST['updateid'], $_POST['areaid1'], $_POST['pumpstationname1']);
                         exit();
                     }
 

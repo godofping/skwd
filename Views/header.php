@@ -19,7 +19,7 @@
 
     <title>SKWD-Water Production Data Sheet (SKWD-WPDS)</title>
   </head>
-  <body>
+  <body class="bg-light">
 
 
 

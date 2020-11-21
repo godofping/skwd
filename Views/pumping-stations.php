@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                 
-                        <h5>List of Users</h5>
+                        <h5>List of Pumping Stations</h5>
 
                         <button class="btn btn-success my-2" data-toggle="modal" data-target="#createModal">Create</button>
 
@@ -17,9 +17,8 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Full Name</th>
-                                        <th>User Type</th>
+                                        <th>Area</th>
+                                        <th>Pump Station</th>
                                         <th>Actions</th>
 
                                     </tr>
@@ -44,29 +43,16 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" id="username" name="username">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" id="password" name="password">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" class="form-control" id="fullname" name="fullname">
-                        </div>
-
-                        <div class="form-group">
-                            <label>User Type</label>
-                            <select class="form-control" id="usertype" name="usertype">
-                                <option>ADMIN</option>
-                                <option>USER</option>
+                            <label>Area</label>
+                            <select class="form-control" id="areaid" name="areaid">
                             </select>
                         </div>
 
-                        
+                        <div class="form-group">
+                            <label>Pump Station</label>
+                            <input type="text" class="form-control" id="pumpstationname" name="pumpstationname">
+                        </div>
+
                     
                     </div>
                     <div class="modal-footer">
@@ -88,26 +74,14 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Username</label>
-                            <input type="text" class="form-control" id="username1" name="username1" disabled="">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" id="password1" name="password1">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" class="form-control" id="fullname1" name="fullname1">
-                        </div>
-
-                        <div class="form-group">
-                            <label>User Type</label>
-                            <select class="form-control" id="usertype1" name="usertype1">
-                                <option>ADMIN</option>
-                                <option>USER</option>
+                            <label>Area</label>
+                            <select class="form-control" id="areaid1" name="areaid1">
                             </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Pump Station</label>
+                            <input type="text" class="form-control" id="pumpstationname1" name="pumpstationname1">
                         </div>
 
                         <input type="text" id="updateid" name="updateid" hidden="">
@@ -149,4 +123,4 @@
 
 
 <?php include('footer.php'); ?>
-<script type="text/javascript" src="Resources/assets/js/users.js"></script>
+<script type="text/javascript" src="Resources/assets/js/pumping-stations.js"></script>
