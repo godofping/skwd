@@ -83,6 +83,16 @@ Class Controller {
 
         
                     $load = $_POST['load'];
+
+                    if ($load == 'selectarea') {
+                        echo json_encode($this->db->selectAreaByID($_POST['areaid']));
+                        exit();
+                    }
+
+                    if ($load == 'selectareas') {
+                        echo json_encode($this->db->selectAreas());
+                        exit();
+                    }
                     
 
                     if ($load == 'selectuser') {
@@ -155,6 +165,11 @@ Class Controller {
                 {
                     $submit = $_POST['submit'];
 
+                    if ($submit == 'createarea') {
+                        echo $this->db->createArea($_POST['areaname']);
+                        exit();
+                    }
+
                 
                     if ($submit == 'createuser') {
                         if (count($this->db->selectUsername($_POST['username'])) > 0) {
@@ -167,9 +182,18 @@ Class Controller {
                         }
                     }
 
+                    if ($submit == 'deletearea') {
+                        echo $this->db->deleteArea($_POST['deleteid']);
+                        exit();
+                    }
 
                     if ($submit == 'deleteuser') {
                         echo $this->db->deleteUser($_POST['deleteid']);
+                        exit();
+                    }
+
+                    if ($submit == 'updatearea') {
+                        echo $this->db->updateArea($_POST['updateid'], $_POST['areaname1']);
                         exit();
                     }
 

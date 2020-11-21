@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                 
-                        <h5>List of areas</h5>
+                        <h5>List of Areas</h5>
 
                         <button class="btn btn-success my-2" data-toggle="modal" data-target="#createModal">Create</button>
 
@@ -18,8 +18,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Area</th>
-
-
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -41,29 +40,10 @@
                 <form id="createForm" name="createForm">
                     <div class="modal-body">
 
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" class="form-control" id="username" name="username">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" id="password" name="password">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" class="form-control" id="fullname" name="fullname">
-                            </div>
-
-                            <div class="form-group">
-                                <label>User Type</label>
-                                <select class="form-control" id="usertype" name="usertype">
-                                    <option>ADMIN</option>
-                                    <option>USER</option>
-                                </select>
-                            </div>
-
+                        <div class="form-group">
+                            <label>Area</label>
+                            <input type="text" class="form-control" id="areaname" name="areaname">
+                        </div>
                         
                     
                     </div>
@@ -85,31 +65,13 @@
                 <form id="updateForm" name="updateForm">
                     <div class="modal-body">
 
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" class="form-control" id="username1" name="username1" disabled="">
-                            </div>
+                        <div class="form-group">
+                            <label>Area</label>
+                            <input type="text" class="form-control" id="areaname1" name="areaname1">
+                        </div>
 
-                            <div class="form-group">
-                                <label>Password</label>
-                                <input type="password" class="form-control" id="password1" name="password1">
-                            </div>
-
-                            <div class="form-group">
-                                <label>Full Name</label>
-                                <input type="text" class="form-control" id="fullname1" name="fullname1">
-                            </div>
-
-                            <div class="form-group">
-                                <label>User Type</label>
-                                <select class="form-control" id="usertype1" name="usertype1">
-                                    <option>ADMIN</option>
-                                    <option>USER</option>
-                                </select>
-                            </div>
-
-                            <input type="text" id="updateid" name="updateid" hidden="">
-                        
+                        <input type="text" id="updateid" name="updateid" hidden="">
+                    
                     
                     </div>
                     <div class="modal-footer">
@@ -147,4 +109,4 @@
 
 
 <?php include('footer.php'); ?>
-<script type="text/javascript" src="Resources/assets/js/users.js"></script>
+<script type="text/javascript" src="Resources/assets/js/areas.js"></script>

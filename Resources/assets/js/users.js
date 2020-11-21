@@ -195,7 +195,7 @@ $('#deleteForm').validate({
 
 
 
-function update(userid)
+function update(id)
 {
 
     $.ajax({
@@ -205,7 +205,7 @@ function update(userid)
     async: false,
     data: {
         load: "selectuser",
-        userid: userid,
+        userid: id,
     },
         success: function(response) {
 
@@ -220,12 +220,10 @@ function update(userid)
 
     });
 
-
-    $('#updateAnnouncementModal').modal('show'); 
 }
 
 
-function del(userid)
+function del(id)
 {
 
     $.ajax({
@@ -235,7 +233,7 @@ function del(userid)
     async: false,
     data: {
         load: "selectuser",
-        userid: userid,
+        userid: id,
     },
         success: function(response) {
 
@@ -248,8 +246,6 @@ function del(userid)
 
     });
 
-
-    $('#updateAnnouncementModal').modal('show'); 
 }
 
 $("#createModal").on('show.bs.modal', function(){

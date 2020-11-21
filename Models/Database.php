@@ -9,6 +9,17 @@ class Database {
     }
 
 
+    public function createArea($areaname){
+
+        $sql = "INSERT INTO area VALUES (NULL, :areaname)";
+        
+        $stm = $this->pdo->prepare($sql);
+        $stm->bindValue(':areaname', $areaname);
+
+        $status = $stm->execute();
+        return ($status) ? $this->pdo->lastInsertId() : 0;
+    }
+
 
     public function createUser($username, $password, $fullname, $usertype){
 
@@ -24,7 +35,19 @@ class Database {
         return ($status) ? $this->pdo->lastInsertId() : 0;
     }
 
- 
+    public function deleteArea($areaid){
+
+        $sql = "DELETE FROM 
+        area 
+        where areaid = :areaid"; 
+        
+        $stm = $this->pdo->prepare($sql);
+
+        $stm->bindValue(':areaid', $areaid);
+
+        $status = $stm->execute();
+        return $status;
+    }
 
     public function deleteUser($userid){
 
@@ -38,6 +61,28 @@ class Database {
 
         $status = $stm->execute();
         return $status;
+    }
+
+    public function selectAreaByID($areaid){
+        $stm = $this->pdo->prepare("SELECT 
+            *
+            FROM area
+            WHERE areaid = :areaid");
+
+        $stm->bindValue(':areaid', $areaid);  
+
+        $success = $stm->execute();
+        $rows = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
+    }
+
+    public function selectAreas(){
+        $stm = $this->pdo->prepare("SELECT 
+            *
+            FROM area");
+        $success = $stm->execute();
+        $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
     }
 
 
@@ -91,7 +136,21 @@ class Database {
         return ($success) ? $rows: [];
     }
 
+    public function updateArea($areaid, $areaname){
 
+        $sql = "UPDATE area 
+        SET 
+        areaname = :areaname
+        where areaid = :areaid";
+        
+        $stm = $this->pdo->prepare($sql);
+
+        $stm->bindValue(':areaid', $areaid);
+        $stm->bindValue(':areaname', $areaname);  
+
+        $status = $stm->execute();
+        return $status;
+    }
 
 
     public function updateUser($userid, $password, $fullname, $usertype){

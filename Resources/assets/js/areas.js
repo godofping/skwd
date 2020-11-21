@@ -5,19 +5,17 @@ var table = $('#maintable').DataTable( {
          "type": "POST",
          "dataSrc": "",
          "data" : {
-            "load" : "selectusers",
+            "load" : "selectareas",
         }
     },
     "columns": [
-        { "data": "userid" },
-        { "data": "username" },
-        { "data": "fullname" },
-        { "data": "usertype" },
+        { "data": "areaid" },
+        { "data": "areaname" },
         {
             "data": null ,
             "render" : function ( data, type, full ) 
             {
-                return "<button type='button' class='btn btn-icon btn-warning mb-1' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['userid'] + ")'><i class='bx bxs-pencil'></i></button> <button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['userid'] + ")'><i class='bx bx-trash-alt'></i></button>";
+                return "<button type='button' class='btn btn-icon btn-warning mb-1' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['areaid'] + ")'><i class='bx bxs-pencil'></i></button> <button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['areaid'] + ")'><i class='bx bx-trash-alt'></i></button>";
             }
         },
     ],
@@ -30,16 +28,7 @@ $('#createForm').validate({
     onfocusout: false,
     rules: {
  
-        username: {
-            required: true,
-        },
-        password: {
-            required: true,
-        },
-        fullname: {
-            required: true,
-        },
-        usertype: {
+        areaname: {
             required: true,
         },
 
@@ -47,7 +36,7 @@ $('#createForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'createuser');
+        formData.append('submit', 'createarea');
 
         $.ajax({
             type: "POST",
@@ -65,11 +54,6 @@ $('#createForm').validate({
 
                     $('#createModal').modal('hide');
                     table.ajax.reload();
-
-                }
-                else if (data < 0){
-                    
-                    swal("Error!", "Username already taken.", "error");
 
                 }
                 else
@@ -94,13 +78,7 @@ $('#updateForm').validate({
     onfocusout: false,
     rules: {
  
-        password1: {
-            required: true,
-        },
-        fullname1: {
-            required: true,
-        },
-        usertype1: {
+        areaname1: {
             required: true,
         },
 
@@ -108,7 +86,7 @@ $('#updateForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'updateuser');
+        formData.append('submit', 'updatearea');
 
         $.ajax({
             type: "POST",
@@ -155,7 +133,7 @@ $('#deleteForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'deleteuser');
+        formData.append('submit', 'deletearea');
 
         $.ajax({
             type: "POST",
@@ -195,37 +173,31 @@ $('#deleteForm').validate({
 
 
 
-function update(userid)
+function update(id)
 {
-
     $.ajax({
     type: "POST",
     dataType: 'json',
     url: "?p=load",
     async: false,
     data: {
-        load: "selectuser",
-        userid: userid,
+        load: "selectarea",
+        areaid: id,
     },
         success: function(response) {
 
             $('#updateModal').modal('show');
 
-            $('#updateid').val(response['userid']);
-            $('#username1').val(response['username']);
-            $('#password1').val(response['password']); 
-            $('#fullname1').val(response['fullname']);
-            $('#usertype1').val(response['usertype']); 
+            $('#updateid').val(response['areaid']);
+            $('#areaname1').val(response['areaname']);
+
         },
 
     });
-
-
-    $('#updateAnnouncementModal').modal('show'); 
 }
 
 
-function del(userid)
+function del(areaid)
 {
 
     $.ajax({
@@ -234,22 +206,20 @@ function del(userid)
     url: "?p=load",
     async: false,
     data: {
-        load: "selectuser",
-        userid: userid,
+        load: "selectarea",
+        areaid: areaid,
     },
         success: function(response) {
 
             $('#deleteModal').modal('show');
 
-            $('#deleteid').val(response['userid']);
-            $('#namespan').text(response['fullname']);
+            $('#deleteid').val(response['areaid']);
+            $('#namespan').text(response['areaname']);
              
         },
 
     });
 
-
-    $('#updateAnnouncementModal').modal('show'); 
 }
 
 $("#createModal").on('show.bs.modal', function(){
