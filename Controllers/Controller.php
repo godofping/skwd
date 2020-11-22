@@ -28,6 +28,17 @@ Class Controller {
                 exit();
             break;
 
+            case ($page === "assign-users"):
+                if ($_SESSION['usertype'] == 'ADMIN' and isset($_GET['pumpid'])) {
+                    require "Views/assign-users.php";
+                }
+                else
+                {
+                    header("location: ?p=error");
+                }
+                exit();
+            break;
+
             case ($page === "areas"):
                 if ($_SESSION['usertype'] == 'ADMIN') {
                     require "Views/areas.php";
@@ -82,6 +93,7 @@ Class Controller {
                 }
                 exit();
             break;
+
 
 
             //END ROUTES
