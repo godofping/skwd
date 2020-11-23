@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate v8.53 
-MySQL - 5.5.5-10.1.37-MariaDB : Database - vincedb
+MySQL - 5.5.5-10.4.11-MariaDB : Database - vincedb
 *********************************************************************
 */
 
@@ -89,17 +89,17 @@ CREATE TABLE `pumping_station` (
 
 insert  into `pumping_station`(`pumpid`,`areaid`,`pumpstationname`) values (5,1,'Pumping Station 1'),(9,1,'Pumping Station 2'),(12,3,'Pumping Station 3');
 
-/*Table structure for table `pumpstationuser` */
+/*Table structure for table `pumping_station_user` */
 
-DROP TABLE IF EXISTS `pumpstationuser`;
+DROP TABLE IF EXISTS `pumping_station_user`;
 
-CREATE TABLE `pumpstationuser` (
-  `pumpstationuserid` int(6) DEFAULT NULL,
+CREATE TABLE `pumping_station_user` (
+  `pumpingstationuserid` int(6) DEFAULT NULL,
   `userid` int(6) DEFAULT NULL,
   `pumpid` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-/*Data for the table `pumpstationuser` */
+/*Data for the table `pumping_station_user` */
 
 /*Table structure for table `user` */
 
@@ -132,12 +132,36 @@ DROP TABLE IF EXISTS `view_pumping_station`;
  `areaname` varchar(60) 
 )*/;
 
+/*Table structure for table `view_pump_station_user` */
+
+DROP TABLE IF EXISTS `view_pump_station_user`;
+
+/*!50001 DROP VIEW IF EXISTS `view_pump_station_user` */;
+/*!50001 DROP TABLE IF EXISTS `view_pump_station_user` */;
+
+/*!50001 CREATE TABLE  `view_pump_station_user`(
+ `pumpingstationuserid` int(6) ,
+ `userid` int(6) ,
+ `pumpid` int(6) ,
+ `fullname` varchar(60) ,
+ `usertype` varchar(20) ,
+ `pumpstationname` varchar(60) ,
+ `areaname` varchar(60) 
+)*/;
+
 /*View structure for view view_pumping_station */
 
 /*!50001 DROP TABLE IF EXISTS `view_pumping_station` */;
 /*!50001 DROP VIEW IF EXISTS `view_pumping_station` */;
 
-/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_pumping_station` AS select `pumping_station`.`pumpid` AS `pumpid`,`pumping_station`.`areaid` AS `areaid`,`pumping_station`.`pumpstationname` AS `pumpstationname`,`area`.`areaname` AS `areaname` from (`pumping_station` join `area` on((`pumping_station`.`areaid` = `area`.`areaid`))) */;
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_pumping_station` AS select `pumping_station`.`pumpid` AS `pumpid`,`pumping_station`.`areaid` AS `areaid`,`pumping_station`.`pumpstationname` AS `pumpstationname`,`area`.`areaname` AS `areaname` from (`pumping_station` join `area` on(`pumping_station`.`areaid` = `area`.`areaid`)) */;
+
+/*View structure for view view_pump_station_user */
+
+/*!50001 DROP TABLE IF EXISTS `view_pump_station_user` */;
+/*!50001 DROP VIEW IF EXISTS `view_pump_station_user` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_pump_station_user` AS select `pumping_station_user`.`pumpingstationuserid` AS `pumpingstationuserid`,`pumping_station_user`.`userid` AS `userid`,`pumping_station_user`.`pumpid` AS `pumpid`,`user`.`fullname` AS `fullname`,`user`.`usertype` AS `usertype`,`pumping_station`.`pumpstationname` AS `pumpstationname`,`area`.`areaname` AS `areaname` from (((`pumping_station_user` join `user` on(`pumping_station_user`.`userid` = `user`.`userid`)) join `pumping_station` on(`pumping_station_user`.`pumpid` = `pumping_station`.`pumpid`)) join `area` on(`pumping_station`.`areaid` = `area`.`areaid`)) */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

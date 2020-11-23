@@ -6,6 +6,9 @@
         <div class="row my-2">
 
             <div class="col-md-12">
+
+                <a href="?p=pumping-stations"><button class="btn btn-dark my-1">Back to Pumping Stations</button></a>
+
                 <div class="card">
                     <div class="card-body">
                 
@@ -18,8 +21,7 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Area</th>
-                                        <th>Pump Station</th>
+                                        <th>Full Name</th>
                                         <th>Actions</th>
 
                                     </tr>
@@ -44,14 +46,8 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Area</label>
-                            <select class="form-control" id="areaid" name="areaid">
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Pump Station</label>
-                            <input type="text" class="form-control" id="pumpstationname" name="pumpstationname">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" id="userid" name="userid">
                         </div>
 
                     
@@ -75,14 +71,8 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Area</label>
-                            <select class="form-control" id="areaid1" name="areaid1">
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Pump Station</label>
-                            <input type="text" class="form-control" id="pumpstationname1" name="pumpstationname1">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" id="userid1" name="userid1">
                         </div>
 
                         <input type="text" id="updateid" name="updateid" hidden="">

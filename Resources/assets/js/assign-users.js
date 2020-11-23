@@ -1,3 +1,4 @@
+
 var table = $('#maintable').DataTable( {
 
     "ajax": {
@@ -5,19 +6,19 @@ var table = $('#maintable').DataTable( {
          "type": "POST",
          "dataSrc": "",
          "data" : {
-            "load" : "selectpumpstations",
+            "load" : "selectpumpstationsusers",
+            "pumpid": get['pumpid'],
         }
     },
     "columns": [
-        { "data": "pumpid" },
-        { "data": "areaname" },
-        { "data": "pumpstationname" },
+        { "data": "pumpingstationuserid" },
+        { "data": "fullname" },
         {
             "data": null ,
             "render" : function ( data, type, full ) 
             {
             	var button = "";
-            	button += "<button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['pumpid'] + ")'><i class='bx bx-trash-alt'></i></button>";
+            	button += "<button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['pumpingstationuserid'] + ")'><i class='bx bx-trash-alt'></i></button>";
             	return button;
             }
         },

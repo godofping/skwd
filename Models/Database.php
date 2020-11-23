@@ -32,6 +32,19 @@ class Database {
         return ($status) ? $this->pdo->lastInsertId() : 0;
     }
 
+
+    public function createPumpStationUser($userid, $pumpid){
+
+        $sql = "INSERT INTO pumping_station_user VALUES (NULL, :userid, :pumpid)";
+        
+        $stm = $this->pdo->prepare($sql);
+        $stm->bindValue(':userid', $userid);
+        $stm->bindValue(':pumpid', $pumpid);  
+
+        $status = $stm->execute();
+        return ($status) ? $this->pdo->lastInsertId() : 0;
+    }
+
     public function createUser($username, $password, $fullname, $usertype){
 
         $sql = "INSERT INTO user VALUES (NULL, :username, :password, :fullname, :usertype)";
@@ -69,6 +82,20 @@ class Database {
         $stm = $this->pdo->prepare($sql);
 
         $stm->bindValue(':pumpid', $pumpid);
+
+        $status = $stm->execute();
+        return $status;
+    }
+
+    public function deletePumpStationUser($pumpingstationuserid){
+
+        $sql = "DELETE FROM 
+        pumping_station_user 
+        where pumpingstationuserid = :pumpingstationuserid"; 
+        
+        $stm = $this->pdo->prepare($sql);
+
+        $stm->bindValue(':pumpingstationuserid', $pumpingstationuserid);
 
         $status = $stm->execute();
         return $status;
@@ -123,10 +150,37 @@ class Database {
         return ($success) ? $rows: [];
     }
 
+
+    public function selectPumpStationUserByID($pumpingstationuserid){
+        $stm = $this->pdo->prepare("SELECT 
+            *
+            FROM view_pump_station_user
+            WHERE pumpingstationuserid = :pumpingstationuserid");
+
+        $stm->bindValue(':pumpingstationuserid', $pumpingstationuserid);  
+
+        $success = $stm->execute();
+        $rows = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
+    }
+
     public function selectPumpStations(){
         $stm = $this->pdo->prepare("SELECT 
             *
             FROM view_pumping_station");
+        $success = $stm->execute();
+        $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
+    }
+
+    public function selectPumpStationsUsers($pumpid){
+        $stm = $this->pdo->prepare("SELECT 
+            *
+            FROM view_pump_station_user 
+            WHERE pumpid = :pumpid");
+
+        $stm->bindValue(':pumpid', $pumpid);  
+
         $success = $stm->execute();
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows: [];
@@ -212,6 +266,24 @@ class Database {
         $stm->bindValue(':pumpid', $pumpid);
         $stm->bindValue(':areaid', $areaid);  
         $stm->bindValue(':pumpstationname', $pumpstationname);  
+
+        $status = $stm->execute();
+        return $status;
+    }
+
+    public function updatePumpStationUser($pumpingstationuserid, $userid, $pumpid){
+
+        $sql = "UPDATE view_pump_station_user 
+        SET 
+        userid = :userid, 
+        pumpid = :pumpid
+        WHERE pumpingstationuserid = :pumpingstationuserid";
+        
+        $stm = $this->pdo->prepare($sql);
+
+        $stm->bindValue(':userid', $userid);
+        $stm->bindValue(':pumpid', $pumpid);  
+        $stm->bindValue(':pumpingstationuserid', $pumpingstationuserid);  
 
         $status = $stm->execute();
         return $status;

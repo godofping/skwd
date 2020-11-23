@@ -4,6 +4,14 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+    	var get = [];
+		location.search.replace('?', '').split('&').forEach(function (val) {
+		    split = val.split("=", 2);
+		    get[split[0]] = split[1];
+		});
+
+    </script>
 
   </body>
 </html>

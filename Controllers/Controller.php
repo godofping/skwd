@@ -126,6 +126,11 @@ Class Controller {
                         echo json_encode($this->db->selectPumpStations());
                         exit();
                     }
+
+                    if ($load == 'selectpumpstationsusers') {
+                        echo json_encode($this->db->selectPumpStationsUsers($_POST['pumpid']));
+                        exit();
+                    }
                     
 
                     if ($load == 'selectuser') {
