@@ -33,7 +33,7 @@ $('#loginform').validate({ // initialize the plugin
                 }
                 else if (data == 2)
                 {
-                    window.location.replace("?p=dashboard");
+                    window.location.replace("?p=data-entry");
                 }
                 else
                 {

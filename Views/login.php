@@ -5,7 +5,7 @@
         } 
 
         if ($_SESSION['usertype'] == 'USER') {
-            header("Location: ?p=view-fuel-logs");
+            header("Location: ?p=data-entry");
         } 
 
 

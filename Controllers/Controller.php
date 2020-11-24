@@ -61,6 +61,17 @@ Class Controller {
                 exit();
             break;
 
+            case ($page === "data-entry"):
+                if ($_SESSION['usertype'] == 'USER') {
+                    require "Views/data-entry.php";
+                }
+                else
+                {
+                    header("location: ?p=error");
+                }
+                exit();
+            break;
+
             case ($page === "login"):
                 require "Views/login.php";
                 exit();
