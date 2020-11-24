@@ -94,10 +94,10 @@
                                 <div class="col-4">
                                     
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <label>Total</label>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <input type="number" class="form-control" readonly="">
                                     </div>
@@ -140,10 +140,10 @@
                                 <div class="col-4">
                                     
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <label>Total</label>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <input type="number" class="form-control" readonly="">
                                     </div>
@@ -186,10 +186,10 @@
                                 <div class="col-4">
                                     <label>Vol. of H2O Pumped</label>
                                 </div>
-                                <div class="col-3">
+                                <div class="col-4">
                                     <label>Total</label>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-4">
                                     <div class="form-group">
                                         <input type="number" class="form-control" readonly="">
                                     </div>
@@ -197,20 +197,22 @@
                             </div>
                         </div>
 
+                        <hr>
+
                         <div id="fourth">
                             <div class="row">
                                 <div class="col-4">
-                                    <label>Flush out</label>
+              
                                 </div>
                                 <div class="col-4">
                                     <label>hrs</label>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-2 pr-1">
                                     <div class="form-group">
                                         <input type="number" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-2 pl-1">
                                     <div class="form-group">
                                         <input type="number" class="form-control">
                                     </div>
@@ -224,12 +226,12 @@
                                 <div class="col-4">
                                     <label>min</label>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-2 pr-1">
                                     <div class="form-group">
                                         <input type="number" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-2 pl-1">
                                     <div class="form-group">
                                         <input type="number" class="form-control">
                                     </div>
@@ -238,17 +240,17 @@
 
                             <div class="row">
                                 <div class="col-4">
-                                    <label>Flush out</label>
+                          
                                 </div>
                                 <div class="col-4">
                                     <label>sec</label>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-2 pr-1">
                                     <div class="form-group">
                                         <input type="number" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-2 pl-1">
                                     <div class="form-group">
                                         <input type="number" class="form-control">
                                     </div>
@@ -264,7 +266,7 @@
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" readonly="">
                                     </div>
                                 </div>
                             </div>
@@ -284,6 +286,464 @@
                                     </div>
                                 </div>
                             </div>
+
+                        </div>
+
+                        <hr>
+
+                        <div id="fifth">
+                            <div class="row">
+                                <div class="col-4">
+              
+                                </div>
+                                <div class="col-4">
+                                    <label>hrs</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Backwashing</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>min</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                          
+                                </div>
+                                <div class="col-4">
+                                    <label>sec</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    
+                                </div>
+                                <div class="col-4">
+                                    <label>Total</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Vol. of H2O Used</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <div id="sixth">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Flowmeter-Q(Cu.m)</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>Present</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>(Booster pump)</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>Previous</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+
+                                </div>
+                                <div class="col-4">
+                                    <label>Total</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div id="seventh">
+                            <div class="row">
+                                <div class="col-4">
+              
+                                </div>
+                                <div class="col-4">
+                                    <label>hrs</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Flush out</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>min</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                          
+                                </div>
+                                <div class="col-4">
+                                    <label>sec</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    
+                                </div>
+                                <div class="col-4">
+                                    <label>Total</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Vol. of H2O flushed out  </label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr>
+
+                        <div id="eight">
+                            <div class="row">
+                                <div class="col-4">
+              
+                                </div>
+                                <div class="col-4">
+                                    <label>hrs</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Backwashing</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>min</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                          
+                                </div>
+                                <div class="col-4">
+                                    <label>sec</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    
+                                </div>
+                                <div class="col-4">
+                                    <label>Total</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Vol. of H2O Used</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div id="ninth">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label>Genset hour meter (hr)</label>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>LOAD</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>hrs</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+
+                                </div>
+                                <div class="col-4">
+                                    <label>min</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+
+                                </div>
+                                <div class="col-4">
+                       
+                                </div>
+                                <div class="col-2 pr-1">
+                          
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>WARM-UP</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>hrs</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+
+                                </div>
+                                <div class="col-4">
+                                    <label>min</label>
+                                </div>
+                                <div class="col-2 pr-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+
+                                </div>
+                                <div class="col-4">
+                       
+                                </div>
+                                <div class="col-2 pr-1">
+                          
+                                </div>
+                                <div class="col-2 pl-1">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
+                   
+                            <div class="row">
+                                <div class="col-6">
+                                    <label>Over all total of load & warm-up</label>
+                                </div>
+                                <div class="col-2">
+                                    <label>hrs</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
 
                         </div>
                         
