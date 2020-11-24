@@ -17,9 +17,9 @@ var table = $('#maintable').DataTable( {
             "render" : function ( data, type, full ) 
             {
             	var button = "";
-                button += "<a href='?p=assign-users&pumpid="+data['pumpid']+"'><button type='button' class='btn btn-icon btn-info' data-toggle='tooltip' data-placement='top' title='Assign Users'><i class='bx bxs-user-badge'></i></button></a>";
-                button += "<button type='button' class='btn btn-icon btn-warning' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['pumpid'] + ")'><i class='bx bxs-pencil'></i></button>";
-            	button += "<button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['pumpid'] + ")'><i class='bx bx-trash-alt'></i></button>";
+                button += "<a href='?p=assign-users&pumpid="+data['pumpid']+"'><button type='button' class='btn btn-icon btn-info m-1' data-toggle='tooltip' data-placement='top' title='Assign Users'><i class='bx bxs-user-badge'></i></button></a>";
+                button += "<button type='button' class='btn btn-icon btn-warning m-1' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['pumpid'] + ")'><i class='bx bxs-pencil'></i></button>";
+            	button += "<button type='button' class='btn btn-icon btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['pumpid'] + ")'><i class='bx bx-trash-alt'></i></button>";
             	return button;
             }
         },
@@ -260,6 +260,9 @@ $.ajax({
             
         dropdown.empty();
         dropdown1.empty();
+
+        dropdown.append('<option disabled="" selected>Please Select</option>');
+        dropdown1.append('<option disabled="" selected>Please Select</option>');
 
         $.each(data, function(index) {
             var val = data[index].areaname;

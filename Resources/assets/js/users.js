@@ -18,8 +18,8 @@ var table = $('#maintable').DataTable( {
             "render" : function ( data, type, full ) 
             {
                 var button = "";
-                button += "<button type='button' class='btn btn-icon btn-warning' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['userid'] + ")'><i class='bx bxs-pencil'></i></button>";
-                button += "<button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['userid'] + ")'><i class='bx bx-trash-alt'></i></button>";
+                button += "<button type='button' class='btn btn-icon btn-warning m-1' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['userid'] + ")'><i class='bx bxs-pencil'></i></button>";
+                button += "<button type='button' class='btn btn-icon btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['userid'] + ")'><i class='bx bx-trash-alt'></i></button>";
                 return button;
             }
         },

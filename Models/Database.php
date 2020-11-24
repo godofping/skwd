@@ -237,6 +237,20 @@ class Database {
         return ($success) ? $rows: [];
     }
 
+    public function selectUsersAvailable($pumpid){
+        $stm = $this->pdo->prepare("SELECT 
+        *  
+        FROM user 
+        WHERE userid NOT IN 
+        (SELECT userid FROM pumping_station_user WHERE pumpid = :pumpid)");
+
+        $stm->bindValue(':pumpid', $pumpid);  
+
+        $success = $stm->execute();
+        $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
+    }
+
     public function updateArea($areaid, $areaname){
 
         $sql = "UPDATE area 
@@ -271,23 +285,7 @@ class Database {
         return $status;
     }
 
-    public function updatePumpStationUser($pumpingstationuserid, $userid, $pumpid){
 
-        $sql = "UPDATE view_pump_station_user 
-        SET 
-        userid = :userid, 
-        pumpid = :pumpid
-        WHERE pumpingstationuserid = :pumpingstationuserid";
-        
-        $stm = $this->pdo->prepare($sql);
-
-        $stm->bindValue(':userid', $userid);
-        $stm->bindValue(':pumpid', $pumpid);  
-        $stm->bindValue(':pumpingstationuserid', $pumpingstationuserid);  
-
-        $status = $stm->execute();
-        return $status;
-    }
 
 
     public function updateUser($userid, $password, $fullname, $usertype){

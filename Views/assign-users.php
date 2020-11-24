@@ -47,7 +47,8 @@
 
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" class="form-control" id="userid" name="userid">
+                            <select class="form-control" id="userid" name="userid">
+                            </select>
                         </div>
 
                     
@@ -72,7 +73,8 @@
 
                         <div class="form-group">
                             <label>Full Name</label>
-                            <input type="text" class="form-control" id="userid1" name="userid1">
+                            <select class="form-control" id="userid1" name="userid1">
+                            </select>
                         </div>
 
                         <input type="text" id="updateid" name="updateid" hidden="">

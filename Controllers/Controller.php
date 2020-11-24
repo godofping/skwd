@@ -127,6 +127,11 @@ Class Controller {
                         exit();
                     }
 
+                    if ($load == 'selectpumpstationuser') {
+                        echo json_encode($this->db->selectPumpStationUserByID($_POST['pumpingstationuserid']));
+                        exit();
+                    }
+
                     if ($load == 'selectpumpstationsusers') {
                         echo json_encode($this->db->selectPumpStationsUsers($_POST['pumpid']));
                         exit();
@@ -140,6 +145,11 @@ Class Controller {
 
                     if ($load == 'selectusers') {
                         echo json_encode($this->db->selectUsers());
+                        exit();
+                    }
+
+                    if ($load == 'selectusersavailable') {
+                        echo json_encode($this->db->selectUsersAvailable($_POST['pumpid']));
                         exit();
                     }
 
@@ -212,6 +222,11 @@ Class Controller {
                         echo $this->db->createPumpStation($_POST['areaid'], $_POST['pumpstationname']);
                         exit();
                     }
+
+                    if ($submit == 'createpumpstationuser') {
+                        echo $this->db->createPumpStationUser($_POST['userid'], $_POST['pumpid']);
+                        exit();
+                    }
                 
                     if ($submit == 'createuser') {
                         if (count($this->db->selectUsername($_POST['username'])) > 0) {
@@ -231,6 +246,11 @@ Class Controller {
 
                     if ($submit == 'deletepumpstation') {
                         echo $this->db->deletePumpStation($_POST['deleteid']);
+                        exit();
+                    }
+
+                    if ($submit == 'deletepumpstationuser') {
+                        echo $this->db->deletePumpStationUser($_POST['deleteid']);
                         exit();
                     }
 

@@ -1,3 +1,4 @@
+populateselect();
 
 var table = $('#maintable').DataTable( {
 
@@ -18,7 +19,7 @@ var table = $('#maintable').DataTable( {
             "render" : function ( data, type, full ) 
             {
             	var button = "";
-            	button += "<button type='button' class='btn btn-icon btn-danger' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['pumpingstationuserid'] + ")'><i class='bx bx-trash-alt'></i></button>";
+            	button += "<button type='button' class='btn btn-icon btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['pumpingstationuserid'] + ")'><i class='bx bx-trash-alt'></i></button>";
             	return button;
             }
         },
@@ -32,10 +33,7 @@ $('#createForm').validate({
     onfocusout: false,
     rules: {
  
-        areaid: {
-            required: true,
-        },
-        pumpstationname: {
+        userid: {
             required: true,
         },
 
@@ -43,7 +41,8 @@ $('#createForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'createpumpstation');
+        formData.append('pumpid', get['pumpid']);
+        formData.append('submit', 'createpumpstationuser');
 
         $.ajax({
             type: "POST",
@@ -81,58 +80,6 @@ $('#createForm').validate({
     }
 });
 
-$('#updateForm').validate({ 
-    onfocusout: false,
-    rules: {
- 
-        areaid1: {
-            required: true,
-        },
-        pumpstationname1: {
-            required: true,
-        },
-
-    },
-    submitHandler: function (form) { 
-
-        var formData = new FormData(form);
-        formData.append('submit', 'updatepumpstation');
-
-        $.ajax({
-            type: "POST",
-            url: "?p=submit",
-            async: true,
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(data) {
-
-                if (data > 0){
-                    
-                    swal("Success!", "Updated.", "success");
-
-                    $('#updateModal').modal('hide');
-                    table.ajax.reload();
-
-                }
-                else
-                {
-                    swal("Something wrong!", "Please try again.", "error");
-                }
-
-            },
-            error: function(data) {
-                swal("Something wrong!", "Please try again.", "error");
-            }
-        });
-
-    },
-
-    messages: {
-
-    }
-});
 
 
 $('#deleteForm').validate({ 
@@ -143,7 +90,7 @@ $('#deleteForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('submit', 'deletepumpstation');
+        formData.append('submit', 'deletepumpstationuser');
 
         $.ajax({
             type: "POST",
@@ -183,33 +130,6 @@ $('#deleteForm').validate({
 
 
 
-function update(id)
-{
-
-    $.ajax({
-    type: "POST",
-    dataType: 'json',
-    url: "?p=load",
-    async: false,
-    data: {
-        load: "selectpumpstation",
-        pumpid: id,
-    },
-        success: function(response) {
-
-            $('#updateModal').modal('show');
-
-            $('#updateid').val(response['pumpid']);
-            $('#areaid1').val(response['areaid']);
-            $('#pumpstationname1').val(response['pumpstationname']); 
-
-        },
-
-    });
-
-}
-
-
 function del(id)
 {
 
@@ -219,15 +139,15 @@ function del(id)
     url: "?p=load",
     async: false,
     data: {
-        load: "selectpumpstation",
-        pumpid: id,
+        load: "selectpumpstationuser",
+        pumpingstationuserid: id,
     },
         success: function(response) {
 
             $('#deleteModal').modal('show');
 
-            $('#deleteid').val(response['pumpid']);
-            $('#namespan').text(response['pumpstationname']);
+            $('#deleteid').val(response['pumpingstationuserid']);
+            $('#namespan').text(response['fullname']);
              
         },
 
@@ -236,42 +156,53 @@ function del(id)
 }
 
 $("#createModal").on('show.bs.modal', function(){
+    populateselect();
     $('#createForm').trigger("reset");
 });
 
-$("#updateModal").on('show.bs.modal', function(){
-    $('#updateForm').trigger("reset");
-});
 
 
-$.ajax({
+
+function populateselect()
+{
+    $.ajax({
     type: "POST",
     url: "?p=load",
     async: true,
     data: {
-        load: "selectareas",
+        load: "selectusersavailable",
+        pumpid: get['pumpid'],
     },
     success: function(data) {
 
         var data = JSON.parse(data);
-        var dropdown = $('#areaid');
-        var dropdown1 = $('#areaid1');
+        var dropdown = $('#userid');
+        var dropdown1 = $('#userid1');
             
         dropdown.empty();
         dropdown1.empty();
+        
+        dropdown.append('<option disabled="" selected>Please Select</option>');
+        dropdown1.append('<option disabled="" selected>Please Select</option>');
 
         $.each(data, function(index) {
-            var val = data[index].areaname;
-            var id = data[index].areaid;
-            selected = "";
-            if(data[index].isDefault == '1')
+
+            if (data[index].usertype == 'USER') 
             {
-                selected = "selected";
-            }
-           dropdown.append("<option " + selected +  " value='" + id + "' >" + val + "</option>");
-           dropdown1.append("<option " + selected +  " value='" + id + "' >" + val + "</option>");
+                var val = data[index].fullname;
+                var id = data[index].userid;
+                selected = "";
+                if(data[index].isDefault == '1')
+                {
+                    selected = "selected";
+                }
+                dropdown.append("<option " + selected +  " value='" + id + "' >" + val + "</option>");
+                dropdown1.append("<option " + selected +  " value='" + id + "' >" + val + "</option>");
+            } 
+
         });
     
     }
 
 });
+}

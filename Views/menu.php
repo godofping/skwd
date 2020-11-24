@@ -9,11 +9,11 @@
   <div class="collapse navbar-collapse" id="navbarToggler">
 
     <div class="border-left">
-      <h6 class="text-white p-2" href="?p=dashboard"> Welcome <b><?php   
+      <p class="text-white p-2" href="?p=dashboard"> Welcome <b><?php   
           $user = $this->db->selectUserByID($_SESSION['userid']);
           echo $user['fullname'];
 
-        ?>!</b> - <small><?php echo $user['usertype']; ?></small></h6>
+        ?>!</b> <br> <small><?php echo $user['usertype']; ?></small></p>
     </div>
 
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -32,7 +32,7 @@
           <a class="nav-link" href="?p=areas">Areas</a>
         </li>
 
-        <li class="nav-item <?= ($page=='pumping-stations') ? 'active' : '' ?>">
+        <li class="nav-item <?= ($page=='pumping-stations' or $page=='assign-users') ? 'active' : '' ?>">
           <a class="nav-link" href="?p=pumping-stations">Pumping Stations</a>
         </li>
 
