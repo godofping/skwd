@@ -41,7 +41,7 @@
       <?php if ($_SESSION['usertype'] == 'USER'): ?>
 
         <li class="nav-item <?= ($page=='select-areas' or $page=='data-entry') ? 'active' : '' ?>">
-          <a class="nav-link" href="?p=select-areas">My Areas</a>
+          <a class="nav-link" href="?p=select-areas">Assigned Pump Stations</a>
         </li>
         
       <?php endif ?>

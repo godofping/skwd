@@ -1,18 +1,18 @@
 <?php include('header.php'); ?>
 <?php include('menu.php'); ?>
-<?php $pumpstation = $this->db->selectPumpStationByID($_GET['pumpid']); ?>
+<?php $pumpingstationuser = $this->db->selectPumpStationUserByID($_GET['pumpingstationuserid']); ?>
 
     <div class="container">
         <div class="row my-2">
 
             <div class="col-md-12">
 
-                <a href="?p=select-areas"><button class="btn btn-dark my-3">Back to My Areas</button></a>
+                <a href="?p=select-areas"><button class="btn btn-dark my-3">Back</button></a>
 
                 <div class="card">
                     <div class="card-body">
                 
-                        <h5>Assign users to <?=$pumpstation['pumpstationname']?></h5>
+                        <h6>Data Entry of <?=$pumpingstationuser['pumpstationname'].", ".$pumpingstationuser['areaname']?></h6>
 
                         <button class="btn btn-success my-2" data-toggle="modal" data-target="#createModal">Create</button>
 
@@ -20,8 +20,8 @@
                             <table class="table table-striped table-bordered" id="maintable" name="maintable">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Full Name</th>
+                                        <th>ENTRY ID</th>
+                                        <th>Date of Entry</th>
                                         <th>Actions</th>
 
                                     </tr>
@@ -46,8 +46,8 @@
                     <div class="modal-body">
 
                         <div class="form-group">
-                            <label>Full Name</label>
-                            <select class="form-control" id="userid" name="userid">
+                            <label>Capacity, Cu.M./Mo.</label>
+                            <input type="number" class="form-control">
                             </select>
                         </div>
 
@@ -90,4 +90,4 @@
 
 
 <?php include('footer.php'); ?>
-<script type="text/javascript" src="Resources/assets/js/assign-users.js"></script>
+<script type="text/javascript" src="Resources/assets/js/data-entry.js"></script>

@@ -61,7 +61,7 @@ Class Controller {
                 exit();
             break;
 
-            case ($page === "data-entry" and isset($_GET['pumpid'])):
+            case ($page === "data-entry" and isset($_GET['pumpingstationuserid'])):
                 if ($_SESSION['usertype'] == 'USER') {
                     require "Views/data-entry.php";
                 }

@@ -1,21 +1,19 @@
 <?php include('header.php'); ?>
 <?php include('menu.php'); ?>
 
-    <div class="container mt-3">
+    <div class="container">
 
         <?php foreach ($this->db->selectPumpStationUserByUserID($_SESSION['userid']) as $res): ?>
 
-            <div class="row">
+            <div class="row mt-3">
 
                 <div class="col-12">
 
-                    <h5 class="text-secondary">My Areas</h5>
-                    
                     <div class="card bg-info">
                         <div class="card-body">
                     
-                            <h3 id="numberofusers" class="text-white"><?=$res['areaname']?></h3>
-                            <a href="?p=data-entry&pumpid=<?=$res['pumpid']?>"><button class="btn btn-secondary">VIEW</button></a>
+                            <h5 id="numberofusers" class="text-white"><?=$res['pumpstationname'].", ".$res['areaname']?></h5>
+                            <a href="?p=data-entry&pumpingstationuserid=<?=$res['pumpingstationuserid']?>"><button class="btn btn-secondary">VIEW</button></a>
 
                         </div>
                     </div>

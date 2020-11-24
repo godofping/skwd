@@ -12,7 +12,6 @@ var table = $('#maintable').DataTable( {
         }
     },
     "columns": [
-        { "data": "pumpingstationuserid" },
         { "data": "fullname" },
         {
             "data": null ,

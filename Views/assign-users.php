@@ -7,12 +7,12 @@
 
             <div class="col-md-12">
 
-                <a href="?p=pumping-stations"><button class="btn btn-dark my-3">Back to Pumping Stations</button></a>
+                <a href="?p=pumping-stations"><button class="btn btn-dark my-3">Back</button></a>
 
                 <div class="card">
                     <div class="card-body">
                 
-                        <h5>Assign users to <?=$pumpstation['pumpstationname']; ?></h5>
+                        <h6>Assign users to <?=$pumpstation['pumpstationname']; ?></h6>
 
                         <button class="btn btn-success my-2" data-toggle="modal" data-target="#createModal">Create</button>
 
@@ -20,7 +20,6 @@
                             <table class="table table-striped table-bordered" id="maintable" name="maintable">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Full Name</th>
                                         <th>Actions</th>
 

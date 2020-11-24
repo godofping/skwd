@@ -167,7 +167,8 @@ class Database {
         $stm = $this->pdo->prepare("SELECT 
             *
             FROM view_pump_station_user
-            WHERE userid = :userid");
+            WHERE userid = :userid 
+            ORDER BY pumpstationname, areaname ASC");
 
         $stm->bindValue(':userid', $userid);  
 

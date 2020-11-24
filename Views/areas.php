@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                 
-                        <h5>List of Areas</h5>
+                        <h6>List of Areas</h6>
 
                         <button class="btn btn-success my-2" data-toggle="modal" data-target="#createModal">Create</button>
 
@@ -16,7 +16,7 @@
                             <table class="table table-striped table-bordered" id="maintable" name="maintable">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>AREA ID</th>
                                         <th>Area</th>
                                         <th>Actions</th>
                                     </tr>

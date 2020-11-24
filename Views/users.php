@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-body">
                 
-                        <h5>List of Users</h5>
+                        <h6>List of Users</h6>
 
                         <button class="btn btn-success my-2" data-toggle="modal" data-target="#createModal">Create</button>
 
@@ -16,7 +16,7 @@
                             <table class="table table-striped table-bordered" id="maintable" name="maintable">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>USER ID</th>
                                         <th>Username</th>
                                         <th>Full Name</th>
                                         <th>User Type</th>
