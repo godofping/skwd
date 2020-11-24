@@ -45,13 +45,248 @@
                 <form id="createForm" name="createForm">
                     <div class="modal-body">
 
-                        <div class="form-group">
-                            <label>Capacity, Cu.M./Mo.</label>
-                            <input type="number" class="form-control">
-                            </select>
+                        <div id="first">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Capacity, Cu.M./Mo.</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Hour meter (Hr.)</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>Present</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Submersible pump</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>Previous</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    
+                                </div>
+                                <div class="col-3">
+                                    <label>Total</label>
+                                </div>
+                                <div class="col-5">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                    
+                        <hr>
+
+                        <div id="second">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Hour meter(Hr)</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>Present</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Booster pump</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>Previous</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    
+                                </div>
+                                <div class="col-3">
+                                    <label>Total</label>
+                                </div>
+                                <div class="col-5">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <div id="third">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Flowmeter-</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>Present</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Discharge-Q(Cu.M)</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>Previous</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Vol. of H2O Pumped</label>
+                                </div>
+                                <div class="col-3">
+                                    <label>Total</label>
+                                </div>
+                                <div class="col-5">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="fourth">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Flush out</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>hrs</label>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Flush out</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>min</label>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Flush out</label>
+                                </div>
+                                <div class="col-4">
+                                    <label>sec</label>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    
+                                </div>
+                                <div class="col-4">
+                                    <label>Total</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <label>Vol. of H2O flushed out</label>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" readonly="">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -90,4 +325,4 @@
 
 
 <?php include('footer.php'); ?>
-<script type="text/javascript" src="Resources/assets/js/data-entry.js"></script>
+<!-- <script type="text/javascript" src="Resources/assets/js/data-entry.js"></script> -->
