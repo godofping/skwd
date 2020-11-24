@@ -5,7 +5,7 @@
         } 
 
         if ($_SESSION['usertype'] == 'USER') {
-            header("Location: ?p=data-entry");
+            header("Location: ?p=select-areas");
         } 
 
 

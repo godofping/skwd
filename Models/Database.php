@@ -150,7 +150,6 @@ class Database {
         return ($success) ? $rows: [];
     }
 
-
     public function selectPumpStationUserByID($pumpingstationuserid){
         $stm = $this->pdo->prepare("SELECT 
             *
@@ -161,6 +160,19 @@ class Database {
 
         $success = $stm->execute();
         $rows = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
+    }
+
+    public function selectPumpStationUserByUserID($userid){
+        $stm = $this->pdo->prepare("SELECT 
+            *
+            FROM view_pump_station_user
+            WHERE userid = :userid");
+
+        $stm->bindValue(':userid', $userid);  
+
+        $success = $stm->execute();
+        $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows: [];
     }
 

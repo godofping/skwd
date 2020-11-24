@@ -33,7 +33,7 @@ $('#loginform').validate({ // initialize the plugin
                 }
                 else if (data == 2)
                 {
-                    window.location.replace("?p=data-entry");
+                    window.location.replace("?p=select-areas");
                 }
                 else
                 {

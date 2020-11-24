@@ -61,7 +61,7 @@ Class Controller {
                 exit();
             break;
 
-            case ($page === "data-entry"):
+            case ($page === "data-entry" and isset($_GET['pumpid'])):
                 if ($_SESSION['usertype'] == 'USER') {
                     require "Views/data-entry.php";
                 }
@@ -86,6 +86,17 @@ Class Controller {
             case ($page === "pumping-stations"):
                 if ($_SESSION['usertype'] == 'ADMIN') {
                     require "Views/pumping-stations.php";
+                }
+                else
+                {
+                    header("location: ?p=error");
+                }
+                exit();
+            break;
+
+            case ($page === "select-areas"):
+                if ($_SESSION['usertype'] == 'USER') {
+                    require "Views/select-areas.php";
                 }
                 else
                 {

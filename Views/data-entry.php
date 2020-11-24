@@ -7,12 +7,12 @@
 
             <div class="col-md-12">
 
-                <a href="?p=pumping-stations"><button class="btn btn-dark my-3">Back to Pumping Stations</button></a>
+                <a href="?p=select-areas"><button class="btn btn-dark my-3">Back to My Areas</button></a>
 
                 <div class="card">
                     <div class="card-body">
                 
-                        <h5>Assign users to <?=$pumpstation['pumpstationname']; ?></h5>
+                        <h5>Assign users to <?=$pumpstation['pumpstationname']?></h5>
 
                         <button class="btn btn-success my-2" data-toggle="modal" data-target="#createModal">Create</button>
 
@@ -36,7 +36,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal fade" id="createModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -62,35 +62,9 @@
         </div>
     </div>
 
-    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="updateModalLabel">Update</h5>
-                </div>
-                <form id="updateForm" name="updateForm">
-                    <div class="modal-body">
 
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <select class="form-control" id="userid1" name="userid1">
-                            </select>
-                        </div>
 
-                        <input type="text" id="updateid" name="updateid" hidden="">
-                        
-                    
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
