@@ -1,21 +1,15 @@
 <?php include('header.php'); ?>
 <?php include('menu.php'); ?>
-<?php $pumpingstationuser = $this->db->selectPumpStationUserByID($_GET['pumpingstationuserid']); ?>
 
     <div class="container">
         <div class="row my-2">
 
             <div class="col-md-12">
 
-                <a href="?p=select-areas"><button class="btn btn-dark my-3">Back</button></a>
-
                 <div class="card">
                     <div class="card-body">
                 
-                        <h6>Data Entry of <?=$pumpingstationuser['pumpstationname'].", ".$pumpingstationuser['areaname']?></h6>
-
-                        <button class="btn btn-success my-2" data-toggle="modal" data-target="#createModal">Create</button>
-
+                        <h6>Data Entries</h6>
 
                         <div class="table-responsive">
                             <table class="table table-striped table-bordered" id="maintable" name="maintable">
@@ -23,9 +17,22 @@
                                     <tr>
                                         <th>ENTRY ID</th>
                                         <th>Date of Entry</th>
+                                        <th>Area</th>
+                                        <th>Pump Station</th>
+                                        <th>Encoded By</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
 
@@ -36,13 +43,13 @@
         </div>
     </div>
 
-    <div class="modal fade" id="createModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal fade" id="updateModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="createModalLabel">Create</h5>
+                    <h5 class="modal-title" id="updateModalLabel">Update</h5>
                 </div>
-                <form id="createForm" name="createForm">
+                <form id="updateForm" name="updateForm">
                     <div class="modal-body m-2">
 
                         <div id="first">
@@ -755,6 +762,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <input type="text" id="updateid" name="updateid" hidden="">
 
 
                         </div>
@@ -1502,8 +1511,32 @@
         </div>
     </div>
 
+    <div class="modal fade" id="deleteModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                </div>
+                <form id="deleteForm" name="deleteForm">
+                    <div class="modal-body">
+
+                        <p>Are you sure to delete ENTRY ID <span id="namespan"></span>?</p>
+
+                        <input type="text" id="deleteid" name="deleteid" hidden="">
+                    
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
 
 
 <?php include('footer.php'); ?>
-<script type="text/javascript" src="Resources/assets/js/data-entry.js"></script>
+<script type="text/javascript" src="Resources/assets/js/data-entries.js"></script>

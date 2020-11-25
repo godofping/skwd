@@ -7,29 +7,59 @@ var table = $('#maintable').DataTable( {
          "type": "POST",
          "dataSrc": "",
          "data" : {
-            "load" : "selectdataentriesbypumpingstationuser",
-            "pumpingstationuserid": get['pumpingstationuserid'],
+            "load" : "selectdataentries",
         }
     },
     "columns": [
         { "data": "monthlyproductiondataid" },
         { "data": "datecreated" },
+        { "data": "areaname" },
+        { "data": "pumpstationname" },
+        { "data": "fullname" },
         {
             "data": null ,
             "render" : function ( data, type, full ) 
             {
                 var button = "";
                 button += "<button type='button' class='btn btn-icon btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View' onclick='view(" + data['monthlyproductiondataid'] + ")'><i class='bx bxs-show'></i></button>";
+                button += "<button type='button' class='btn btn-icon btn-warning m-1' data-toggle='tooltip' data-placement='top' title='Update' onclick='update(" + data['monthlyproductiondataid'] + ")'><i class='bx bxs-pencil'></i></button>";
+                button += "<button type='button' class='btn btn-icon btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['monthlyproductiondataid'] + ")'><i class='bx bx-trash-alt'></i></button>";
                 return button;
+                
             }
         },
     ],
-    "order": [[ 0, "asc" ]]
+    "order": [[ 0, "asc" ]],
+
+    initComplete: function () {
+            this.api().columns().every( function (i) {
+                if (i == 0 | i == 5) {} 
+                else 
+                {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo( $(column.footer()).empty() )
+                        .on( 'change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+     
+                            column
+                                .search( val ? '^'+val+'$' : '', true, false )
+                                .draw();
+                        } );
+     
+                    column.data().unique().sort().each( function ( d, j ) {
+                        select.append( '<option value="'+d+'">'+d+'</option>' )
+                    } );
+                }
+            } );
+        }
             
 });
 
 
-$('#createForm').validate({ 
+$('#updateForm').validate({ 
     onfocusout: false,
     rules: {
  
@@ -226,8 +256,7 @@ $('#createForm').validate({
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
-        formData.append('pumpingstationuserid', get['pumpingstationuserid']);
-        formData.append('submit', 'createdataentry');
+        formData.append('submit', 'updatedataentry');
 
         $.ajax({
             type: "POST",
@@ -239,12 +268,13 @@ $('#createForm').validate({
             processData: false,
             success: function(data) {
 
+                console.log(data);
            
                 if (data > 0){
                     
                     swal("Success!", "Saved.", "success");
 
-                    $('#createModal').modal('hide');
+                    $('#updateModal').modal('hide');
                     table.ajax.reload();
 
                 }
@@ -267,9 +297,55 @@ $('#createForm').validate({
 });
 
 
+$('#deleteForm').validate({ 
+    onfocusout: false,
+    rules: {
 
-$("#createModal").on('show.bs.modal', function(){
-    $('#createForm').trigger("reset");
+    },
+    submitHandler: function (form) { 
+
+        var formData = new FormData(form);
+        formData.append('submit', 'deletedataentry');
+
+        $.ajax({
+            type: "POST",
+            url: "?p=submit",
+            async: true,
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+
+                if (data > 0){
+                    
+                    swal("Success!", "Deleted.", "success");
+
+                    $('#deleteModal').modal('hide');
+                    table.ajax.reload();
+
+                }
+                else
+                {
+                    swal("Something wrong!", "Please try again.", "error");
+                }
+
+            },
+            error: function(data) {
+                swal("Something wrong!", "Please try again.", "error");
+            }
+        });
+
+    },
+
+    messages: {
+
+    }
+});
+
+
+$("#updateModal").on('show.bs.modal', function(){
+    $('#updateForm').trigger("reset");
 });
 
 $("#viewModal").on('show.bs.modal', function(){
@@ -277,7 +353,7 @@ $("#viewModal").on('show.bs.modal', function(){
 });
 
 
-$('#createForm').on('keyup change paste', 'input, select, textarea', function(){
+$('#updateForm').on('keyup change paste', 'input, select, textarea', function(){
     calculate();
 });
 
@@ -503,4 +579,116 @@ function view(id)
         },
 
     });
+}
+
+function update(id)
+{
+    $.ajax({
+    type: "POST",
+    dataType: 'json',
+    url: "?p=load",
+    async: false,
+    data: {
+        load: "selectdataentrybypumpingstationuser",
+        monthlyproductiondataid: id,
+    },
+        success: function(response) {
+
+            $('#updateModal').modal('show');
+
+            $('#forval').val(response['forval']);
+            $('#d10').val(response['d10']);
+            $('#e10').val(response['e10']);
+            $('#d11').val(response['d11']); 
+            $('#d12').val(response['d12']);
+            $('#d13').val(response['d13']); 
+            $('#d15').val(response['d15']);
+            $('#d16').val(response['d16']);
+            $('#d17').val(response['d17']);
+            $('#d19').val(response['d19']);
+            $('#d20').val(response['d20']);
+            $('#d21').val(response['d21']);
+            $('#d23').val(response['d23']);
+            $('#e23').val(response['e23']);
+            $('#d24').val(response['d24']);
+            $('#e24').val(response['e24']);
+            $('#d25').val(response['d25']);
+            $('#e25').val(response['e25']);
+            $('#e26').val(response['e26']);
+            $('#c27').val(response['c27']);
+            $('#d27').val(response['d27']);
+            $('#d30').val(response['d30']);
+            $('#e30').val(response['e30']);
+            $('#d31').val(response['d31']);
+            $('#e31').val(response['e31']);
+            $('#d32').val(response['d32']);
+            $('#e32').val(response['e32']);
+            $('#e33').val(response['e33']);
+            $('#c34').val(response['c34']);
+            $('#d34').val(response['d34']);
+            $('#d38').val(response['d38']);
+            $('#d39').val(response['d39']);
+            $('#d40').val(response['d40']);
+            $('#d43').val(response['d43']);
+            $('#e43').val(response['e43']);
+            $('#d44').val(response['d44']);
+            $('#e44').val(response['e44']);
+            $('#d45').val(response['d45']);
+            $('#e45').val(response['e45']);
+            $('#e46').val(response['e46']);
+            $('#c47').val(response['c47']);
+            $('#d47').val(response['d47']);
+            $('#d50').val(response['d50']);
+            $('#e50').val(response['e50']);
+            $('#d51').val(response['d51']);
+            $('#e51').val(response['e51']);
+            $('#d52').val(response['d52']);
+            $('#e52').val(response['e52']);
+            $('#e53').val(response['e53']);
+            $('#c55').val(response['c55']);
+            $('#d55').val(response['d55']);
+            $('#d58').val(response['d58']);
+            $('#e58').val(response['e58']);
+            $('#d59').val(response['d59']);
+            $('#e59').val(response['e59']);
+            $('#e60').val(response['e60']);
+            $('#d61').val(response['d61']);
+            $('#e61').val(response['e61']);
+            $('#d62').val(response['d62']);
+            $('#e62').val(response['e62']);
+            $('#e63').val(response['e63']);
+            $('#e65').val(response['e65']);
+
+            $('#updateid').val(response['monthlyproductiondataid']);
+            
+
+        },
+
+    });
+}
+
+
+function del(id)
+{
+
+    $.ajax({
+    type: "POST",
+    dataType: 'json',
+    url: "?p=load",
+    async: false,
+    data: {
+        load: "selectdataentrybypumpingstationuser",
+        monthlyproductiondataid: id,
+    },
+        success: function(response) {
+
+            $('#deleteModal').modal('show');
+
+            $('#deleteid').val(response['monthlyproductiondataid']);
+            $('#namespan').text(response['monthlyproductiondataid']);
+             
+        },
+
+    });
+
 }

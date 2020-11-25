@@ -36,6 +36,10 @@
           <a class="nav-link" href="?p=pumping-stations">Pumping Stations</a>
         </li>
 
+        <li class="nav-item <?= ($page=='data-entries') ? 'active' : '' ?>">
+          <a class="nav-link" href="?p=data-entries">Data Entries</a>
+        </li>
+
       <?php endif ?>
 
       <?php if ($_SESSION['usertype'] == 'USER'): ?>
