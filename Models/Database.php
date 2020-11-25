@@ -42,6 +42,7 @@ class Database {
         :d25, 
         :e25, 
         :e26, 
+        :c27, 
         :d27, 
         :d30, 
         :e30, 
@@ -84,6 +85,7 @@ class Database {
         :e62,  
         :e63, 
         :e65, 
+        :forval, 
         :datecreated)";
         
         $stm = $this->pdo->prepare($sql);
@@ -107,6 +109,7 @@ class Database {
         $stm->bindValue(':d25', $data['d25']);
         $stm->bindValue(':e25', $data['e25']);
         $stm->bindValue(':e26', $data['e26']);
+        $stm->bindValue(':c27', $data['c27']);
         $stm->bindValue(':d27', $data['d27']);
         $stm->bindValue(':d30', $data['d30']);
         $stm->bindValue(':e30', $data['e30']);
@@ -149,6 +152,7 @@ class Database {
         $stm->bindValue(':e62', $data['e62']);
         $stm->bindValue(':e63', $data['e63']);
         $stm->bindValue(':e65', $data['e65']);
+        $stm->bindValue(':forval', $data['forval']);
         $stm->bindValue(':datecreated', $data['datecreated']);
 
 
@@ -283,6 +287,19 @@ class Database {
 
         $success = $stm->execute();
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
+    }
+
+    public function selectDataEntryByPumpingStationUserID($monthlyproductiondataid){
+        $stm = $this->pdo->prepare("SELECT 
+            *
+            FROM view_monthly_production_data 
+            where monthlyproductiondataid = :monthlyproductiondataid");
+
+        $stm->bindValue(':monthlyproductiondataid', $monthlyproductiondataid); 
+
+        $success = $stm->execute();
+        $rows = $stm->fetch(PDO::FETCH_ASSOC);
         return ($success) ? $rows: [];
     }
 

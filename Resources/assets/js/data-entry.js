@@ -7,7 +7,7 @@ var table = $('#maintable').DataTable( {
          "type": "POST",
          "dataSrc": "",
          "data" : {
-            "load" : "selectdataentiesbypumpingstationuser",
+            "load" : "selectdataentriesbypumpingstationuser",
             "pumpingstationuserid": get['pumpingstationuserid'],
         }
     },
@@ -85,6 +85,9 @@ $('#createForm').validate({
             required: true,
         },
         e26: {
+            required: true,
+        },
+        c27: {
             required: true,
         },
         d27: {
@@ -236,7 +239,6 @@ $('#createForm').validate({
             processData: false,
             success: function(data) {
 
-                console.log(data);
            
                 if (data > 0){
                     
@@ -266,11 +268,12 @@ $('#createForm').validate({
 
 
 
-
-
-
 $("#createModal").on('show.bs.modal', function(){
     $('#createForm').trigger("reset");
+});
+
+$("#viewModal").on('show.bs.modal', function(){
+    $('#viewForm').trigger("reset");
 });
 
 
@@ -417,4 +420,90 @@ function calculate()
     var e65 = parseFloat($('#e60').val()) + parseFloat($('#e63').val()); 
     $('#e65').val(e65.toFixed(2)); //Total
 
+}
+
+function view(id)
+{
+    $.ajax({
+    type: "POST",
+    dataType: 'json',
+    url: "?p=load",
+    async: false,
+    data: {
+        load: "selectdataentrybypumpingstationuser",
+        monthlyproductiondataid: id,
+    },
+        success: function(response) {
+
+            $('#viewModal').modal('show');
+
+            $('#forval_').val(response['forval']);
+            $('#d10_').val(response['d10']);
+            $('#e10_').val(response['e10']);
+            $('#d11_').val(response['d11']); 
+            $('#d12_').val(response['d12']);
+            $('#d13_').val(response['d13']); 
+            $('#d15_').val(response['d15']);
+            $('#d16_').val(response['d16']);
+            $('#d17_').val(response['d17']);
+            $('#d19_').val(response['d19']);
+            $('#d20_').val(response['d20']);
+            $('#d21_').val(response['d21']);
+            $('#d23_').val(response['d23']);
+            $('#e23_').val(response['e23']);
+            $('#d24_').val(response['d24']);
+            $('#e24_').val(response['e24']);
+            $('#d25_').val(response['d25']);
+            $('#e25_').val(response['e25']);
+            $('#e26_').val(response['e26']);
+            $('#c27_').val(response['c27']);
+            $('#d27_').val(response['d27']);
+            $('#d30_').val(response['d30']);
+            $('#e30_').val(response['e30']);
+            $('#d31_').val(response['d31']);
+            $('#e31_').val(response['e31']);
+            $('#d32_').val(response['d32']);
+            $('#e32_').val(response['e32']);
+            $('#e33_').val(response['e33']);
+            $('#c34_').val(response['c34']);
+            $('#d34_').val(response['d34']);
+            $('#d38_').val(response['d38']);
+            $('#d39_').val(response['d39']);
+            $('#d40_').val(response['d40']);
+            $('#d43_').val(response['d43']);
+            $('#e43_').val(response['e43']);
+            $('#d44_').val(response['d44']);
+            $('#e44_').val(response['e44']);
+            $('#d45_').val(response['d45']);
+            $('#e45_').val(response['e45']);
+            $('#e46_').val(response['e46']);
+            $('#c47_').val(response['c47']);
+            $('#d47_').val(response['d47']);
+            $('#d50_').val(response['d50']);
+            $('#e50_').val(response['e50']);
+            $('#d51_').val(response['d51']);
+            $('#e51_').val(response['e51']);
+            $('#d52_').val(response['d52']);
+            $('#e52_').val(response['e52']);
+            $('#e53_').val(response['e53']);
+            $('#c55_').val(response['c55']);
+            $('#d55_').val(response['d55']);
+            $('#d58_').val(response['d58']);
+            $('#e58_').val(response['e58']);
+            $('#d59_').val(response['d59']);
+            $('#e59_').val(response['e59']);
+            $('#e60_').val(response['e60']);
+            $('#d61_').val(response['d61']);
+            $('#e61_').val(response['e61']);
+            $('#d62_').val(response['d62']);
+            $('#e62_').val(response['e62']);
+            $('#e63_').val(response['e63']);
+            $('#e65_').val(response['e65']);
+
+            $('#dateofentryspan').text(response['datacreated']);
+            
+
+        },
+
+    });
 }

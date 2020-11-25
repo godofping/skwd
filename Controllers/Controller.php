@@ -139,8 +139,13 @@ Class Controller {
                         exit();
                     }
 
-                    if ($load == 'selectdataentiesbypumpingstationuser') {
+                    if ($load == 'selectdataentriesbypumpingstationuser') {
                         echo json_encode($this->db->selectDataEntriesByPumpingStationUserID($_POST['pumpingstationuserid']));
+                        exit();
+                    }
+
+                    if ($load == 'selectdataentrybypumpingstationuser') {
+                        echo json_encode($this->db->selectDataEntryByPumpingStationUserID($_POST['monthlyproductiondataid']));
                         exit();
                     }
 
@@ -268,6 +273,7 @@ Class Controller {
                             'd25' => $_POST['d25'],
                             'e25' => $_POST['e25'],
                             'e26' => $_POST['e26'],
+                            'c27' => $_POST['c27'],
                             'd27' => $_POST['d27'],
                             'd30' => $_POST['d30'],
                             'e30' => $_POST['e30'],
@@ -310,6 +316,7 @@ Class Controller {
                             'e62' => $_POST['e62'],
                             'e63' => $_POST['e63'],
                             'e65' => $_POST['e65'],
+                            'forval' => $_POST['forval'],
                             'datecreated' => date('Y-m-d'),
                         ];
 
