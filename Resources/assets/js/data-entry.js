@@ -121,6 +121,7 @@ function calculate()
     $('#d21').val(d21.toFixed(2)); //Total
 
 
+    //Flushout 1
     var d23 = parseFloat($('#d23').val());  //hrs
     $('#e23').val(d23.toFixed(2)); //Total
 
@@ -141,7 +142,7 @@ function calculate()
 
 
 
-
+    //Backwashing 1
     var d30 = parseFloat($('#d30').val());  //hrs
     $('#e30').val(d30.toFixed(2)); //Total
 
@@ -165,7 +166,7 @@ function calculate()
     $('#d40').val(d40.toFixed(2)); //Total
 
 
-
+    //Flush out 2
     var d43 = parseFloat($('#d43').val());  //hrs
     $('#e43').val(d43.toFixed(2)); //Total
 
@@ -178,10 +179,58 @@ function calculate()
     var e46 = parseFloat($('#e43').val()) + parseFloat($('#e44').val()) + parseFloat($('#e45').val());
     $('#e46').val(e46.toFixed(2)); //Total
 
-    var c47 = parseFloat($('#c47').val());
-    $('#c47').val(c47.toFixed(2)); //Total
+    var c47 = parseFloat(0.001);
+    $('#c47').val(c47); //Total
 
     var d47 = parseFloat($('#e46').val()) * parseFloat($('#c47').val());
     $('#d47').val(d47.toFixed(2)); //Total
+
+
+    //Backwashing 2
+    var d50 = parseFloat($('#d50').val());  //hrs
+    $('#e50').val(d50.toFixed(2)); //Total
+
+    var d51 = parseFloat($('#d51').val());  //min
+    $('#e51').val((d51/60).toFixed(2)); //Total
+
+    var d52 = parseFloat($('#d52').val());  //sec
+    $('#e52').val((d52/3600).toFixed(2)); //Total
+
+    var e53 = parseFloat($('#e50').val()) + parseFloat($('#e51').val()) + parseFloat($('#e52').val());
+    $('#e53').val(e53.toFixed(2)); //Total
+
+    var c55 = parseFloat($('#c47').val());  //sec
+    $('#c55').val(c55); //Total
+
+    var d55 = parseFloat($('#e53').val()) * parseFloat($('#c55').val());
+    $('#d55').val(d55.toFixed(2)); //Total
+
+
+    //Genset meter hr
+    //load
+    var d58 = parseFloat($('#d58').val());  //hrs
+    $('#e58').val(d58.toFixed(2)); //Total
+
+    var d59 = parseFloat($('#d59').val());  //min
+    $('#e59').val((d59/60).toFixed(2)); //Total
+
+
+    var e60 = parseFloat($('#e58').val()) + parseFloat($('#e59').val()); 
+    $('#e60').val(e60.toFixed(2)); //Total
+
+    //warm-up
+    var d61 = parseFloat($('#d61').val());  //hrs
+    $('#e61').val(d61.toFixed(2)); //Total
+
+    var d62 = parseFloat($('#d62').val());  //min
+    $('#e62').val((d62/60).toFixed(2)); //Total
+
+
+    var e63 = parseFloat($('#e61').val()) + parseFloat($('#e62').val()); 
+    $('#e63').val(e63.toFixed(2)); //Total
+
+
+    var e65 = parseFloat($('#e60').val()) + parseFloat($('#e63').val()); 
+    $('#e65').val(e65.toFixed(2)); //Total
 
 }
