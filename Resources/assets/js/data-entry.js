@@ -140,6 +140,8 @@ function calculate()
     $('#d27').val(d27.toFixed(2)); //Total
 
 
+
+
     var d30 = parseFloat($('#d30').val());  //hrs
     $('#e30').val(d30.toFixed(2)); //Total
 
@@ -154,5 +156,32 @@ function calculate()
 
     var c34 = parseFloat($('#c27').val());  //sec
     $('#c34').val(c34.toFixed(2)); //Total
+
+
+
+    var d38 = parseFloat($('#d38').val());  //Present
+    var d39 = parseFloat($('#d39').val());  //Previous
+    var d40 = d38 - d39;
+    $('#d40').val(d40.toFixed(2)); //Total
+
+
+
+    var d43 = parseFloat($('#d43').val());  //hrs
+    $('#e43').val(d43.toFixed(2)); //Total
+
+    var d44 = parseFloat($('#d44').val());  //min
+    $('#e44').val((d44/60).toFixed(2)); //Total
+
+    var d45 = parseFloat($('#d45').val());  //sec
+    $('#e45').val((d45/3600).toFixed(2)); //Total
+
+    var e46 = parseFloat($('#e43').val()) + parseFloat($('#e44').val()) + parseFloat($('#e45').val());
+    $('#e46').val(e46.toFixed(2)); //Total
+
+    var c47 = parseFloat($('#c47').val());
+    $('#c47').val(c47.toFixed(2)); //Total
+
+    var d47 = parseFloat($('#e46').val()) * parseFloat($('#c47').val());
+    $('#d47').val(d47.toFixed(2)); //Total
 
 }

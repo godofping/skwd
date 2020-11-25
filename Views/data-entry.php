@@ -408,7 +408,7 @@
                                 </div>
                                 <div class="col-5 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" id="d38" name="d38">
                                     </div>
                                 </div>
                             </div>
@@ -422,7 +422,7 @@
                                 </div>
                                 <div class="col-5 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" id="d39" name="d39">
                                     </div>
                                 </div>
                             </div>
@@ -436,7 +436,7 @@
                                 </div>
                                 <div class="col-6 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" readonly="">
+                                        <input type="number" class="form-control" readonly="" id="d40" name="d40">
                                     </div>
                                 </div>
                             </div>
@@ -454,12 +454,12 @@
                                 </div>
                                 <div class="col-3 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" id="d43" name="d43">
                                     </div>
                                 </div>
                                 <div class="col-3 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" readonly="" id="e43" name="e43">
                                     </div>
                                 </div>
                             </div>
@@ -473,12 +473,12 @@
                                 </div>
                                 <div class="col-3 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" id="d44" name="d44">
                                     </div>
                                 </div>
                                 <div class="col-3 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" readonly="" id="e44" name="e44">
                                     </div>
                                 </div>
                             </div>
@@ -492,12 +492,12 @@
                                 </div>
                                 <div class="col-3 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" id="d45" name="d45">
                                     </div>
                                 </div>
                                 <div class="col-3 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" readonly="" id="e45" name="e45">
                                     </div>
                                 </div>
                             </div>
@@ -511,7 +511,7 @@
                                 </div>
                                 <div class="col-6 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" readonly="">
+                                        <input type="number" class="form-control" readonly="" id="e46" name="e46">
                                     </div>
                                 </div>
                             </div>
@@ -522,12 +522,12 @@
                                 </div>
                                 <div class="col-4 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" readonly="">
+                                        <input type="number" class="form-control" readonly="" id="c47" name="c47">
                                     </div>
                                 </div>
                                 <div class="col-4 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" readonly="">
+                                        <input type="number" class="form-control" readonly="" id="d47" name="d47">
                                     </div>
                                 </div>
                             </div>
