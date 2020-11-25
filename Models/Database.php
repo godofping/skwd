@@ -22,10 +22,135 @@ class Database {
 
     public function createDataEntry($data){
 
-        $sql = "INSERT INTO area VALUES (NULL, :pumpingstationid, :userid)";
+        $sql = "INSERT INTO monthly_production_data VALUES (NULL, 
+        :pumpingstationuserid, 
+        :d10, 
+        :e10, 
+        :d11, 
+        :d12, 
+        :d13, 
+        :d15, 
+        :d16, 
+        :d17, 
+        :d19, 
+        :d20, 
+        :d21, 
+        :d23, 
+        :e23, 
+        :d24, 
+        :e24, 
+        :d25, 
+        :e25, 
+        :e26, 
+        :d27, 
+        :d30, 
+        :e30, 
+        :d31, 
+        :e31, 
+        :d32, 
+        :e32, 
+        :e33, 
+        :c34, 
+        :d34, 
+        :d38, 
+        :d39, 
+        :d40, 
+        :d43, 
+        :e43, 
+        :d44, 
+        :e44, 
+        :d45, 
+        :e45, 
+        :e46, 
+        :c47, 
+        :d47, 
+        :d50, 
+        :e50, 
+        :d51, 
+        :e51, 
+        :d52, 
+        :e52, 
+        :e53, 
+        :c55, 
+        :d55, 
+        :d58, 
+        :e58, 
+        :d59, 
+        :e59, 
+        :e60, 
+        :d61, 
+        :e61, 
+        :d62, 
+        :e62,  
+        :e63, 
+        :e65, 
+        :datecreated)";
         
         $stm = $this->pdo->prepare($sql);
-        $stm->bindValue(':areaname', $areaname);
+
+        $stm->bindValue(':pumpingstationuserid', $data['pumpingstationuserid']);
+        $stm->bindValue(':d10', $data['d10']);
+        $stm->bindValue(':e10', $data['e10']);
+        $stm->bindValue(':d11', $data['d11']);
+        $stm->bindValue(':d12', $data['d12']);
+        $stm->bindValue(':d13', $data['d13']);
+        $stm->bindValue(':d15', $data['d15']);
+        $stm->bindValue(':d16', $data['d16']);
+        $stm->bindValue(':d17', $data['d17']);
+        $stm->bindValue(':d19', $data['d19']);
+        $stm->bindValue(':d20', $data['d20']);
+        $stm->bindValue(':d21', $data['d21']);
+        $stm->bindValue(':d23', $data['d23']);
+        $stm->bindValue(':e23', $data['e23']);
+        $stm->bindValue(':d24', $data['d24']);
+        $stm->bindValue(':e24', $data['e24']);
+        $stm->bindValue(':d25', $data['d25']);
+        $stm->bindValue(':e25', $data['e25']);
+        $stm->bindValue(':e26', $data['e26']);
+        $stm->bindValue(':d27', $data['d27']);
+        $stm->bindValue(':d30', $data['d30']);
+        $stm->bindValue(':e30', $data['e30']);
+        $stm->bindValue(':d31', $data['d31']);
+        $stm->bindValue(':e31', $data['e31']);
+        $stm->bindValue(':d32', $data['d32']);
+        $stm->bindValue(':e32', $data['e32']);
+        $stm->bindValue(':e33', $data['e33']);
+        $stm->bindValue(':c34', $data['c34']);
+        $stm->bindValue(':d34', $data['d34']);
+        $stm->bindValue(':d38', $data['d38']);
+        $stm->bindValue(':d39', $data['d39']);
+        $stm->bindValue(':d40', $data['d40']);
+        $stm->bindValue(':d43', $data['d43']);
+        $stm->bindValue(':e43', $data['e43']);
+        $stm->bindValue(':d44', $data['d44']);
+        $stm->bindValue(':e44', $data['e44']);
+        $stm->bindValue(':d45', $data['d45']);
+        $stm->bindValue(':e45', $data['e45']);
+        $stm->bindValue(':e46', $data['e46']);
+        $stm->bindValue(':c47', $data['c47']);
+        $stm->bindValue(':d47', $data['d47']);
+        $stm->bindValue(':d50', $data['d50']);
+        $stm->bindValue(':e50', $data['e50']);
+        $stm->bindValue(':d51', $data['d51']);
+        $stm->bindValue(':e51', $data['e51']);
+        $stm->bindValue(':d52', $data['d52']);
+        $stm->bindValue(':e52', $data['e52']);
+        $stm->bindValue(':e53', $data['e53']);
+        $stm->bindValue(':c55', $data['c55']);
+        $stm->bindValue(':d55', $data['d55']);
+        $stm->bindValue(':d58', $data['d58']);
+        $stm->bindValue(':e58', $data['e58']);
+        $stm->bindValue(':d59', $data['d59']);
+        $stm->bindValue(':e59', $data['e59']);
+        $stm->bindValue(':e60', $data['e60']);
+        $stm->bindValue(':d61', $data['d61']);
+        $stm->bindValue(':e61', $data['e61']);
+        $stm->bindValue(':d62', $data['d62']);
+        $stm->bindValue(':e62', $data['e62']);
+        $stm->bindValue(':e63', $data['e63']);
+        $stm->bindValue(':e65', $data['e65']);
+        $stm->bindValue(':datecreated', $data['datecreated']);
+
 
         $status = $stm->execute();
         return ($status) ? $this->pdo->lastInsertId() : 0;
@@ -143,6 +268,19 @@ class Database {
         $stm = $this->pdo->prepare("SELECT 
             *
             FROM area");
+        $success = $stm->execute();
+        $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
+    }
+
+    public function selectDataEntriesByPumpingStationUserID($pumpingstationuserid){
+        $stm = $this->pdo->prepare("SELECT 
+            *
+            FROM view_monthly_production_data 
+            where pumpingstationuserid = :pumpingstationuserid");
+
+        $stm->bindValue(':pumpingstationuserid', $pumpingstationuserid); 
+
         $success = $stm->execute();
         $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $rows: [];

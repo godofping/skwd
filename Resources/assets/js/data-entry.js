@@ -1,48 +1,230 @@
 
 
-// var table = $('#maintable').DataTable( {
+var table = $('#maintable').DataTable( {
 
-//     "ajax": {
-//         "url": "?p=load",
-//          "type": "POST",
-//          "dataSrc": "",
-//          "data" : {
-//             "load" : "selectpumpstationsusers",
-//             "pumpid": get['pumpid'],
-//         }
-//     },
-//     "columns": [
-//         { "data": "pumpingstationuserid" },
-//         { "data": "fullname" },
-//         {
-//             "data": null ,
-//             "render" : function ( data, type, full ) 
-//             {
-//             	var button = "";
-//             	button += "<button type='button' class='btn btn-icon btn-danger m-1' data-toggle='tooltip' data-placement='top' title='Delete' onclick='del(" + data['pumpingstationuserid'] + ")'><i class='bx bx-trash-alt'></i></button>";
-//             	return button;
-//             }
-//         },
-//     ],
-//     "order": [[ 0, "asc" ]]
+    "ajax": {
+        "url": "?p=load",
+         "type": "POST",
+         "dataSrc": "",
+         "data" : {
+            "load" : "selectdataentiesbypumpingstationuser",
+            "pumpingstationuserid": get['pumpingstationuserid'],
+        }
+    },
+    "columns": [
+        { "data": "monthlyproductiondataid" },
+        { "data": "datecreated" },
+        {
+            "data": null ,
+            "render" : function ( data, type, full ) 
+            {
+                var button = "";
+                button += "<button type='button' class='btn btn-icon btn-warning m-1' data-toggle='tooltip' data-placement='top' title='View' onclick='view(" + data['monthlyproductiondataid'] + ")'><i class='bx bxs-show'></i></button>";
+                return button;
+            }
+        },
+    ],
+    "order": [[ 0, "asc" ]]
             
-// });
+});
 
 
 $('#createForm').validate({ 
     onfocusout: false,
     rules: {
  
-        userid: {
+        d10: {
             required: true,
         },
+        e10: {
+            required: true,
+        },
+        d11: {
+            required: true,
+        },
+        d12: {
+            required: true,
+        },
+        d13: {
+            required: true,
+        },
+        d15: {
+            required: true,
+        },
+        d16: {
+            required: true,
+        },
+        d17: {
+            required: true,
+        },
+        d19: {
+            required: true,
+        },
+        d20: {
+            required: true,
+        },
+        d21: {
+            required: true,
+        },
+        d23: {
+            required: true,
+        },
+        e23: {
+            required: true,
+        },
+        d24: {
+            required: true,
+        },
+        e24: {
+            required: true,
+        },
+        d25: {
+            required: true,
+        },
+        e25: {
+            required: true,
+        },
+        e26: {
+            required: true,
+        },
+        d27: {
+            required: true,
+        },
+        d30: {
+            required: true,
+        },
+        e30: {
+            required: true,
+        },
+        d31: {
+            required: true,
+        },
+        e31: {
+            required: true,
+        },
+        d32: {
+            required: true,
+        },
+        e32: {
+            required: true,
+        },
+        e33: {
+            required: true,
+        },
+        c34: {
+            required: true,
+        },
+        d34: {
+            required: true,
+        },
+        d38: {
+            required: true,
+        },
+        d39: {
+            required: true,
+        },
+        d40: {
+            required: true,
+        },
+        d43: {
+            required: true,
+        },
+        e43: {
+            required: true,
+        },
+        d44: {
+            required: true,
+        },
+        e44: {
+            required: true,
+        },
+        d45: {
+            required: true,
+        },
+        e45: {
+            required: true,
+        },
+        e46: {
+            required: true,
+        },
+        c47: {
+            required: true,
+        },
+        d47: {
+            required: true,
+        },
+        d50: {
+            required: true,
+        },
+        e50: {
+            required: true,
+        },
+        d51: {
+            required: true,
+        },
+        e51: {
+            required: true,
+        },
+        d52: {
+            required: true,
+        },
+        e52: {
+            required: true,
+        },
+        e53: {
+            required: true,
+        },
+        c55: {
+            required: true,
+        },
+        d55: {
+            required: true,
+        },
+        d58: {
+            required: true,
+        },
+        e58: {
+            required: true,
+        },
+        d59: {
+            required: true,
+        },
+        e59: {
+            required: true,
+        },
+        e60: {
+            required: true,
+        },
+        d61: {
+            required: true,
+        },
+        e61: {
+            required: true,
+        },
+        d62: {
+            required: true,
+        },
+        e62: {
+            required: true,
+        },
+        e63: {
+            required: true,
+        },
+        e65: {
+            required: true,
+        },
+        forval: {
+            required: true,
+        },
+
+
 
     },
     submitHandler: function (form) { 
 
         var formData = new FormData(form);
         formData.append('pumpingstationuserid', get['pumpingstationuserid']);
-        formData.append('submit', 'createpumpstationuser');
+        formData.append('submit', 'createdataentry');
 
         $.ajax({
             type: "POST",
@@ -53,13 +235,15 @@ $('#createForm').validate({
             contentType: false,
             processData: false,
             success: function(data) {
+
+                console.log(data);
            
                 if (data > 0){
                     
                     swal("Success!", "Saved.", "success");
 
                     $('#createModal').modal('hide');
-                    // table.ajax.reload();
+                    table.ajax.reload();
 
                 }
                 else
@@ -157,9 +341,6 @@ function calculate()
 
     var c34 = parseFloat($('#c27').val());  //sec
     $('#c34').val(c34.toFixed(2)); //Total
-
-    var d34 = parseFloat($('#d34').val());  //sec
-    $('#d34').val(d34.toFixed(2)); //Total
 
 
 

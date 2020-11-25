@@ -23,7 +23,6 @@
                                         <th>ENTRY ID</th>
                                         <th>Date of Entry</th>
                                         <th>Actions</th>
-
                                     </tr>
                                 </thead>
                             </table>
@@ -297,7 +296,7 @@
                                 </div>
                                 <div class="col-4 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" readonly="d27" id="d27">
+                                        <input type="number" class="form-control" readonly="" id="d27" name="d27">
                                     </div>
                                 </div>
                             </div>
@@ -584,7 +583,7 @@
                                 </div>
                                 <div class="col-3 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" id="d52" max="d52">
+                                        <input type="number" class="form-control" id="d52" name="d52">
                                     </div>
                                 </div>
                                 <div class="col-3 px-1">
