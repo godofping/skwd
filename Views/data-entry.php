@@ -389,7 +389,7 @@
                                 </div>
                                 <div class="col-4 px-1">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" readonly="" id="d34" name="d34">
+                                        <input type="number" class="form-control" id="d34" name="d34">
                                     </div>
                                 </div>
                             </div>

@@ -158,6 +158,9 @@ function calculate()
     var c34 = parseFloat($('#c27').val());  //sec
     $('#c34').val(c34.toFixed(2)); //Total
 
+    var d34 = parseFloat($('#d34').val());  //sec
+    $('#d34').val(d34.toFixed(2)); //Total
+
 
 
     var d38 = parseFloat($('#d38').val());  //Present
