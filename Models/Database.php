@@ -22,7 +22,7 @@ class Database {
 
     public function createDataEntry($data){
 
-        $sql = "INSERT INTO area VALUES (NULL, :areaname)";
+        $sql = "INSERT INTO area VALUES (NULL, :pumpingstationid, :userid)";
         
         $stm = $this->pdo->prepare($sql);
         $stm->bindValue(':areaname', $areaname);
