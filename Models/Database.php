@@ -20,6 +20,17 @@ class Database {
         return ($status) ? $this->pdo->lastInsertId() : 0;
     }
 
+    public function createDataEntry($data){
+
+        $sql = "INSERT INTO area VALUES (NULL, :areaname)";
+        
+        $stm = $this->pdo->prepare($sql);
+        $stm->bindValue(':areaname', $areaname);
+
+        $status = $stm->execute();
+        return ($status) ? $this->pdo->lastInsertId() : 0;
+    }
+
     public function createPumpStation($areaid, $pumpstationname){
 
         $sql = "INSERT INTO pumping_station VALUES (NULL, :areaid, :pumpstationname)";
