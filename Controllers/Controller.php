@@ -139,6 +139,11 @@ Class Controller {
                         exit();
                     }
 
+                    if ($load == 'selectdashboard') {
+                        echo json_encode($this->db->selectDashboard());
+                        exit();
+                    }
+
                     if ($load == 'selectdataentriesbypumpingstationuser') {
                         echo json_encode($this->db->selectDataEntriesByPumpingStationUserID($_POST['pumpingstationuserid']));
                         exit();

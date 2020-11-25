@@ -277,6 +277,17 @@ class Database {
         return ($success) ? $rows: [];
     }
 
+    public function selectDashboard(){
+        $stm = $this->pdo->prepare("SELECT 
+            (SELECT COUNT(*) FROM USER where usertype = 'USER') AS `users`,
+            (SELECT COUNT(*) FROM AREA) AS `areas`,
+            (SELECT COUNT(*) FROM pumping_station) AS `pumpstations`,
+            (SELECT COUNT(*) FROM monthly_production_data) AS `dataentries`");
+        $success = $stm->execute();
+        $rows = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $rows: [];
+    }
+
     public function selectDataEntriesByPumpingStationUserID($pumpingstationuserid){
         $stm = $this->pdo->prepare("SELECT 
             *

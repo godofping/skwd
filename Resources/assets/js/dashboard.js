@@ -10,6 +10,11 @@ function loadData()
     },
         success: function(response) {
 
+
+            $('#dataentries').text(response['dataentries']);
+            $('#users').text(response['users']); 
+            $('#areas').text(response['areas']);
+            $('#pumpstations').text(response['pumpstations']); 
         },
 
     });

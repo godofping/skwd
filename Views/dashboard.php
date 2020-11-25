@@ -2,74 +2,56 @@
 <?php include('menu.php'); ?>
 
     <div class="container">
-        <div class="row mt-5">
+        
+        <div class="row my-2">
+            <div class="col-12">
+                <div class="card bg-info">
+                    <div class="card-body text-center">
+                        <h5 class="text-white">Data Entries</h5>
+                        <span id="dataentries" class="text-white display-1">0</span>
 
-            <div class="col-6">
-                
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                        
-                                <h1 id="numberofusers" class="text-info">0</h1>
-                                <h6>Number of Users</h6>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
-
-                <br>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                        
-                                <h1 id="numberofdrivers" class="text-success">0</h1>
-                                <h6>Number of drivers</h6>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-
-            <div class="col-6">
-                
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                        
-                                <h1 id="numberofvehicles" class="text-danger">0</h1>
-                                <h6>Number of vehicles</h6>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                        
-                                <h1 id="numberoflogs" class="text-primary">0</h1>
-                                <h6>Number of logs</h6>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-
         </div>
+
+        <div class="row my-2">
+            <div class="col-12">
+                <div class="card bg-info">
+                    <div class="card-body text-center">
+                        <h5 class="text-white">Users</h5>
+                        <span id="users" class="text-white display-1">0</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-12">
+                <div class="card bg-info">
+                    <div class="card-body text-center">
+                        <h5 class="text-white">Areas</h5>
+                        <span id="areas" class="text-white display-1">0</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-2">
+            <div class="col-12">
+                <div class="card bg-info">
+                    <div class="card-body text-center">
+                        <h5 class="text-white">Pumping Stations</h5>
+                        <span id="pumpstations" class="text-white display-1">0</span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 
